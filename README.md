@@ -1,6 +1,6 @@
 # Template Application Axway Appcelerator Titanium Mobile SDK with burger menu
 
-![Template Titanium mobile burger menu](https://github.com/SquirrelMobile/templateAppceleratorBurgerMenu/blob/master/screens/animated.gif?raw=true "Template Titanium mobile burger menu")
+![Template Titanium mobile burger menu](https://github.com/SquirrelMobile/titanium-template-burger/blob/master/screens/animated.gif?raw=true "Template Titanium mobile burger menu")
 
 ## Handle fonts
 
