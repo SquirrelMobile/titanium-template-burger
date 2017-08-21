@@ -18,6 +18,14 @@
     });
   }
 
+  $.login.listener('return', function(){
+    $.password.focus();
+  });
+
+  $.password.listener('return', function(){
+    connect();
+  });
+
 })($.args);
 
 
@@ -53,9 +61,17 @@ function openWin(e){
  */
 function connect(e){
 
-    var password = require("core").requiredField($.password);
-    var login = require("core").requiredField($.login);
+    var password = $.password.getValue();
+    var login = $.login.getValue();
 
+    if(!require('core').valideEmail(login)){
+      Ti.UI.createAlertDialog({
+        title : 'Attention',
+        message : 'Merci de saisir un email valide'
+      }).show();
+      return false;
+    }
+    
     if(password && login){
 
       /*Alloy.Globals.loading.show(L("loading"));

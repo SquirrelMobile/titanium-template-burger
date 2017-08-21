@@ -34,6 +34,7 @@
   "dependencies": {
     "nl.fokkezb.loading": "*",
     "de.manumaticx.pagingcontrol": "*",
-    "nl.fokkezb.drawer": "*"
+    "nl.fokkezb.drawer": "*",
+    "input-materialdesign": "*"
   }
 }
