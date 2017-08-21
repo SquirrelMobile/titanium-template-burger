@@ -71,7 +71,7 @@ function connect(e){
       }).show();
       return false;
     }
-    
+
     if(password && login){
 
       /*Alloy.Globals.loading.show(L("loading"));
@@ -101,5 +101,76 @@ function next(e){
 
   if($[e.source.next])
     $[e.source.next].focus();
+
+}
+
+
+//TUTORIEL EXAMPLE
+if(Ti.App.Properties.getBool('showTutorial') || 1 == 1){
+
+  var tutorial = Alloy.createWidget("fr.squirrel.tutorial",{
+    indicatorSelect : {
+      image: "/images/ellipseblue.png"
+    },
+    indicatorUnselect : {
+      image: "/images/ellipseblueinactive.png"
+    },
+    titleBtnStart: "Next",
+    titleBtnEnd : "Close",
+    success : function(e){
+      tutorial.close();
+      Ti.App.Properties.setBool('showTutorial', false);
+    }
+  });
+
+  var pages = [
+    {
+      page : {
+        backgroundColor : Alloy.CFG.COLORS.main,
+      },
+      title : {
+        text : "Lorem ipsum dolor.",
+      },
+      subtitle :{
+        text : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin magna eget velit aliquet, id facilisis nulla commodo. Fusce a hendrerit dolor, sed volutpat lacus.",
+      },
+      logo:{
+        image :"/images/common/logo.png"
+      }
+    },
+    {
+      page : {
+        backgroundColor : Alloy.CFG.COLORS.main,
+      },
+      title : {
+        text : "Curabitur scelerisque justo.",
+      },
+      subtitle :{
+        text : "Nam viverra gravida quam varius aliquam",
+      },
+      logo:{
+        image :"/images/common/logo.png"
+      }
+    },
+    {
+      page : {
+        backgroundColor : Alloy.CFG.COLORS.main,
+      },
+      title : {
+        text : "Cras in tincidunt eros.",
+      },
+      subtitle :{
+        text : "Aenean fringilla mi sit amet luctus tristique. Cras ultrices dolor non lacus bibendum tristique.",
+      },
+      logo:{
+        image :"/images/common/logo.png"
+      }
+    }
+  ];
+
+  $.win.addEventListener('open', function(){
+    this.removeEventListener('open', arguments.callee);
+    tutorial.setPages(pages);
+  });
 
 }

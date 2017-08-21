@@ -35,6 +35,7 @@
     "nl.fokkezb.loading": "*",
     "de.manumaticx.pagingcontrol": "*",
     "nl.fokkezb.drawer": "*",
-    "input-materialdesign": "*"
+    "input-materialdesign": "*",
+    "fr.squirrel.tutorial": "*"
   }
 }

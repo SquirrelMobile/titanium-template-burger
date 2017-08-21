@@ -24,6 +24,7 @@
       if(version < 1){
 
         Ti.App.Properties.setBool('isConnected', false);
+        Ti.App.Properties.setBool('showTutorial', true);
         Ti.App.Properties.setBool('asCrash', false);
 
         db.execute('CREATE TABLE IF NOT EXISTS variable (id INTEGER PRIMARY KEY AUTOINCREMENT, key_ VARCHAR(255) NOT NULL, value TEXT NULL)');
