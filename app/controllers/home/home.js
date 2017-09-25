@@ -4,6 +4,8 @@
  *
  */
 
+var calendar = null;
+
 /**
  * @method Controller
  * Display home view, load home
@@ -20,6 +22,10 @@
     }
   });
 
+  calendar = Alloy.createController('common/calendar');
+
+  calendar.on('chooseDate', updateDate);
+  
 })($.args);
 
 /**
@@ -52,5 +58,34 @@ function openWindow(e){
     }
   };
   dispatcher.trigger('openWindow', obj);
+
+}
+
+
+function openCalendar(e){
+
+  calendar.open({
+    args : {
+      active_dates : ['2017-09-02'],
+      title : 'Date de début',
+      showNoReturn : false,
+
+      //WIDGET
+      // nb_display_month : 12,
+    	// day: Moment().date(),
+    	// month: Moment().month(),
+    	// year: Moment().year(),
+    	// active_dates: null,
+
+    	backgroundColor: 'transparent',
+    	dateBackgroundColor: '#6000',
+    	todayBackgroundColor: 'blue',
+    	dateTextColor: '#fff',
+    	todayTextColor: '#000',
+    	activePinColor: 'orange',
+    	inactivePinColor: 'transparent',
+    	selectedBackgroundColor: '#6f80'
+    }
+  });
 
 }

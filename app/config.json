@@ -36,6 +36,7 @@
     "de.manumaticx.pagingcontrol": "*",
     "nl.fokkezb.drawer": "*",
     "input-materialdesign": "*",
-    "fr.squirrel.tutorial": "*"
+    "fr.squirrel.tutorial": "*",
+    "com.caffeinalab.titanium.calendar": "*"
   }
 }
