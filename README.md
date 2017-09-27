@@ -7,6 +7,13 @@
 1. Place all your font on `app/assets/fonts` folder.
 2. For cross-plateform, name your font as the `PostScript` name, more info here : http://docs.appcelerator.com/platform/latest/#!/guide/Custom_Fonts-section-src-29004935_CustomFonts-RenamefontfiletomatchPostScriptname
 
+## Use Awesome / Material fonts
+- http://fontawesome.io/icons/
+- https://material.io/icons/
+- Take the unicode of the icons and add \u before.
+Example : `<Label class="fa" text="\uf0c0" />`
+"fa" is the class create in app.tss
+
 ## Handle assets images
 
 1. Install `ticons` package https://www.npmjs.com/package/ticons

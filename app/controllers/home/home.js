@@ -25,7 +25,7 @@ var calendar = null;
   calendar = Alloy.createController('common/calendar');
 
   calendar.on('chooseDate', updateDate);
-  
+
 })($.args);
 
 /**
@@ -88,4 +88,12 @@ function openCalendar(e){
     }
   });
 
+}
+
+function updateDate(e){
+  Ti.API.log('--- update date '  + JSON.stringify(e));
+  //e.reset
+  //e.date
+  var date = Alloy.Globals.moment(e.date);
+  alert('Date choisie ' + date.format('dddd DD MMMM YYYY'));
 }

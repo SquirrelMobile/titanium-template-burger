@@ -21,10 +21,10 @@ var $calendar, calendarView, triggerCalendar;
 function close(e){
 
     if($calendar){
-        //$calendar.off('click', triggerCalendar);
+        $calendar.off('click', triggerCalendar);
         $.containerCalendar.remove(calendarView);
-        //calendarView = null;
-        //$calendar = null;
+        calendarView = null;
+        $calendar = null;
     }
 
     $.win.close();

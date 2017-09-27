@@ -3,9 +3,3 @@
   backgroundColor: Alloy.CFG.COLORS.main,
   layout: "vertical"
 }
-
-/*
-".size": {
-  color : 'pink',
-  font : { fontSize: 40}
-}*/
