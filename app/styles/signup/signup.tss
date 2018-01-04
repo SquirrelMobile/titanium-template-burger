@@ -12,22 +12,49 @@
   title:  "Valider"
 }
 
-"#lastname": {
-  hintText: "Votre nom"
-}
-
-"#firstname": {
-  hintText: "Votre prénom"
-}
-
 "#email": {
-  hintText: "Votre email",
-  keyboardType: Ti.UI.KEYBOARD_TYPE_EMAIL
+  autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+  autocorrect: false,
+  titleHint : 'Votre email',
+  colorFont : "white",
+  colorFocus : Alloy.CFG.COLORS.main2,
+  colorPattern : "white",
+  required : "Email non valide",
+  keyboardType: Ti.UI.KEYBOARD_TYPE_EMAIL,
+  returnKey: Ti.UI.RETURNKEY_NEXT
 }
 
 "#password": {
+  minLength : 8,
+  autocorrect: false,
+  titleHint : 'Votre mot de passe',
+  colorFont : "white",
+  colorFocus : Alloy.CFG.COLORS.main2,
+  colorPattern : "white",
+  required : "Mot de passe non valide",
   hintText: "Votre mot de passe",
-  passwordMask: true
+  password: true,
+  returnKey: Ti.UI.RETURNKEY_SEND
+}
+
+"#lastname": {
+  titleHint : 'Votre nom',
+  autocorrect: false,
+  colorFont : "white",
+  colorFocus : Alloy.CFG.COLORS.main2,
+  colorPattern : "white",
+  required : "Nom non valide",
+  returnKey: Ti.UI.RETURNKEY_NEXT
+}
+
+"#firstname": {
+  titleHint: "Votre prénom",
+  autocorrect: false,
+  colorFont : "white",
+  colorFocus : Alloy.CFG.COLORS.main2,
+  colorPattern : "white",
+  required : "Prénom non valide",
+  returnKey: Ti.UI.RETURNKEY_NEXT
 }
 
 ".form": {

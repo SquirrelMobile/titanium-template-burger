@@ -21,6 +21,22 @@
     }
   });
 
+  $.lastname.listener('return', function(){
+    $.firstname.focus();
+  });
+
+  $.firstname.listener('return', function(){
+    $.email.focus();
+  });
+
+  $.email.listener('return', function(){
+    $.password.focus();
+  });
+
+  $.password.listener('return', function(){
+    submit();
+  });
+
 })($.args);
 
 
@@ -32,10 +48,18 @@
  */
 function submit(e){
 
-  var lastname = require("core").requiredField($.lastname);
-  var firstname = require("core").requiredField($.firstname);
-  var password = require("core").requiredField($.password);
-  var email = require("core").requiredField($.email);
+  var lastname = $.lastname.getValue();
+  var firstname = $.firstname.getValue();
+  var password = $.password.getValue();
+  var email = $.email.getValue();
+
+  if(!require('core').valideEmail(email)){
+    Ti.UI.createAlertDialog({
+      title : 'Attention',
+      message : 'Merci de saisir un email valide'
+    }).show();
+    return false;
+  }
 
   if(lastname && firstname && email && password){
 

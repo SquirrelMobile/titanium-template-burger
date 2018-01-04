@@ -30,31 +30,42 @@ var menu = [
   {
     id : 'home',
     controller : 'home/home',
-    image : '/images/common/logo.png',
+    image : {
+       text : '\uf015'
+    },
     title : 'Accueil',
     templateActive : 'activeTemplateWithIcon',
     templateInactive : 'inactiveTemplateWithIcon'
   },
   {
     id : 'list',
+    image : {
+      text : '\uf03a'
+    },
     controller : 'partials/_detailList',
     title : 'Liste',
-    templateActive : 'activeTemplateWithoutIcon',
-    templateInactive : 'inactiveTemplateWithoutIcon'
+    templateActive : 'activeTemplateWithIcon',
+    templateInactive : 'inactiveTemplateWithIcon'
   },
   {
     id : 'profil',
+    image : {
+      text : '\uf007'
+    },
     controller : 'profil/profil',
     title : 'Profil',
-    templateActive : 'activeTemplateWithoutIcon',
-    templateInactive : 'inactiveTemplateWithoutIcon'
+    templateActive : 'activeTemplateWithIcon',
+    templateInactive : 'inactiveTemplateWithIcon'
   },
   {
     id : 'logout',
+    image : {
+      text : '\uf08b'
+    },
     controller : null,
     title : 'Déconnexion',
-    templateActive : 'activeTemplateWithoutIcon',
-    templateInactive : 'inactiveTemplateWithoutIcon'
+    templateActive : 'activeTemplateWithIcon',
+    templateInactive : 'inactiveTemplateWithIcon'
   }
 ];
 

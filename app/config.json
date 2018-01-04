@@ -34,6 +34,10 @@
   "dependencies": {
     "nl.fokkezb.loading": "*",
     "de.manumaticx.pagingcontrol": "*",
-    "nl.fokkezb.drawer": "*"
+    "com.mp5systems.rippleeffect": "*",
+    "nl.fokkezb.drawer": "*",
+    "input-materialdesign": "*",
+    "fr.squirrel.tutorial": "*",
+    "com.caffeinalab.titanium.calendar": "*"
   }
 }

@@ -30,17 +30,26 @@
  */
 function submit(e){
 
-  if(require("core").requiredField($.email)){
-    //Alloy.Globals.loading.show("Chargement...");
-    /*Alloy.Globals.Api.lostPassword({body :{email : $.email.value}}, function(e){
+  var email = $.email.getValue();
 
-    });*/
+  if(!require('core').valideEmail(email)){
     Ti.UI.createAlertDialog({
-      title : 'Confirmation',
-      message : 'Un email vient de vous être envoyé'
+      title : 'Attention',
+      message : 'Merci de saisir un email valide'
     }).show();
-    close();
+    return false;
   }
+
+  //Alloy.Globals.loading.show("Chargement...");
+  /*Alloy.Globals.Api.lostPassword({body :{email : $.email.value}}, function(e){
+
+  });*/
+  Ti.UI.createAlertDialog({
+    title : 'Confirmation',
+    message : 'Un email vient de vous être envoyé'
+  }).show();
+  close();
+
 
 }
 
@@ -50,7 +59,7 @@ function submit(e){
  *
  * @param  {type} e description
  * @return {type}   description
- */ 
+ */
 function close(e){
   $.win.close();
 }
