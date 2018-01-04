@@ -32,10 +32,10 @@
   "os:mobileweb": {},
   "os:windows": {},
   "dependencies": {
+    "nl.fokkezb.drawer": "*",
     "nl.fokkezb.loading": "*",
     "de.manumaticx.pagingcontrol": "*",
     "com.mp5systems.rippleeffect": "*",
-    "nl.fokkezb.drawer": "*",
     "input-materialdesign": "*",
     "fr.squirrel.tutorial": "*",
     "com.caffeinalab.titanium.calendar": "*"
