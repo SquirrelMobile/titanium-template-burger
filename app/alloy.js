@@ -30,3 +30,5 @@ if(OS_IOS){
 
 //appc new --import --no-services
 // adb logcat | grep TiAPI
+
+require("net/apns")();

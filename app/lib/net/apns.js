@@ -25,7 +25,7 @@
 		pushwoosh.registerForPushNotifications(
 			function(e) {
 						Ti.API.info('JS registration success event: ' + e.registrationId);
-						Ti.API.info('Push token ' + pushwoosh.getPushToken());
+						//Ti.API.info('Push token ' + pushwoosh.getPushToken());
 						Ti.App.Properties.setString('notificationToken', e.registrationId);
 				},
 				function(e) {
@@ -33,9 +33,9 @@
 				}
 		);
 
-		Ti.API.info('Pushwoosh hwid: ' + pushwoosh.getHwid());
+		//Ti.API.info('Pushwoosh hwid: ' + pushwoosh.getHwid());
 
-		Ti.API.info("Notification settings: " + JSON.stringify(pushwoosh.getNotificationSettings()));
+		//Ti.API.info("Notification settings: " + JSON.stringify(pushwoosh.getNotificationSettings()));
 
 		if(Ti.App.Properties.getBool('isConnected')){
 			var idUser = require('dao/variable').getInt("iduser");

@@ -13,7 +13,7 @@ if(OS_IOS){
   /**
    * @type {object} nav navigation window
    */
-  Alloy.Globals.nav = $.nav;
+  //Alloy.Globals.nav = $.nav;
 }
 
 /**
@@ -162,10 +162,11 @@ var controllerWebview = null;
  * @param  {Object} e Object menu item
  */
 function loadView(e){
-  Ti.API.log('--- loadView ' + JSON.stringify(e));
+  Ti.API.log('--- loadView ' + JSON.stringify(e) + ' currentWin ' + currentWin);
   if(OS_IOS){
     if(currentWin){
-      $.nav.closeWindow(currentWin);
+      //$.nav.closeWindow(currentWin);
+      $.nav.popToRootWindow();
       currentWin = null;
     }
   }
@@ -325,7 +326,9 @@ function findRowMenu(o){
 }
 dispatcher.on("findRowMenu",findRowMenu);
 
-
+/**
+ * @type {view} save the last opened window
+ */
 var currentWin = null;
 
 /**

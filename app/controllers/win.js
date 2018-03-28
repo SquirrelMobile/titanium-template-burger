@@ -36,3 +36,7 @@ function actions(e){
   }
 
 }
+
+function clean(e){
+  $.destroy();
+}
