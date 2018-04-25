@@ -1,5 +1,6 @@
 console.log('DIRECTORY IS => '+Ti.Filesystem.applicationDataDirectory);
 
+Alloy.Globals.dispatcher = _.clone(Backbone.Events);
 Alloy.Globals.moment = require('moment');
 Alloy.Globals.moment.locale(Ti.Locale.currentLanguage);
 Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
