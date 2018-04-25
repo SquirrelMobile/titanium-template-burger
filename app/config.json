@@ -3,7 +3,10 @@
     "FONTS": {
       "light": "Helvetica-Light",
       "regular": "Helvetica-Regular",
-      "bold": "Helvetica-Bold"
+      "bold": "Helvetica-Bold",
+      "fabrands": "FontAwesome5BrandsRegular",
+      "fareg": "FontAwesome5FreeRegular",
+      "fa": "FontAwesome5FreeSolid"
     },
     "COLORS": {
       "main": "#f89a3c",

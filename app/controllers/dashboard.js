@@ -60,7 +60,7 @@ var menu = [
   {
     id : 'logout',
     image : {
-      text : '\uf08b'
+      text : '\uf2f5'
     },
     controller : null,
     title : 'Déconnexion',
