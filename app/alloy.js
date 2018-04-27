@@ -1,11 +1,12 @@
 console.log('DIRECTORY IS => '+Ti.Filesystem.applicationDataDirectory);
 
-Alloy.Globals.dispatcher = _.clone(Backbone.Events);
+Alloy.Globals.events = _.clone(Backbone.Events);
 Alloy.Globals.moment = require('moment');
 Alloy.Globals.moment.locale(Ti.Locale.currentLanguage);
 Alloy.Globals.loading = Alloy.createWidget("nl.fokkezb.loading");
 
 Alloy.Globals.Device = {
+	isiPhoneX 	 : (Ti.Platform.displayCaps.platformWidth === 375 && Ti.Platform.displayCaps.platformHeight === 812 && Ti.Platform.displayCaps.logicalDensityFactor === 3),
 	version			 : Ti.Platform.version,
 	versionMajor : parseInt(Ti.Platform.version.split(".")[0], 10),
 	versionMinor : parseInt(Ti.Platform.version.split(".")[1], 10),

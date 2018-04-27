@@ -94,7 +94,7 @@ function openWindow(e){
       }
     }
   };
-  Alloy.Globals.dispatcher.trigger('openWindow', obj);
+  Alloy.Globals.events.trigger('openWindow', obj);
 
 }
 

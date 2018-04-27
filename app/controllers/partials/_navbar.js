@@ -21,9 +21,9 @@
 function actions(e){
 
   if(e.source.type === "Left" || e.source.type === "Right"){
-    Alloy.Globals.dispatcher.trigger('openMenu', { type : e.source.type });
+    Alloy.Globals.events.trigger('openMenu', { type : e.source.type });
   }else if(e.source.type === "home"){
-    Alloy.Globals.dispatcher.trigger('findRowMenu', { id : 'home' });
+    Alloy.Globals.events.trigger('findRowMenu', { id : 'home' });
   }else{
     $.trigger('click', { type : e.source.type });
   }

@@ -78,8 +78,8 @@ var menu = [
     $.drawer.window.windowSoftInputMode = Titanium.UI.Android.SOFT_INPUT_ADJUST_PAN;
   }
   $.drawer.open();
-  Alloy.Globals.dispatcher.off("findRowMenu");
-  Alloy.Globals.dispatcher.off("openWindow");
+  Alloy.Globals.events.off("findRowMenu");
+  Alloy.Globals.events.off("openWindow");
 
 })($.args);
 
@@ -127,7 +127,7 @@ function toggle(e) {
 
 }
 
-Alloy.Globals.dispatcher.on('openMenu', toggle);
+Alloy.Globals.events.on('openMenu', toggle);
 
 /**
  * @event windowDidOpen
@@ -322,7 +322,7 @@ function findRowMenu(o){
   });
 
 }
-Alloy.Globals.dispatcher.on("findRowMenu",findRowMenu);
+Alloy.Globals.events.on("findRowMenu",findRowMenu);
 
 /**
  * @type {view} save the last opened window
@@ -365,7 +365,7 @@ function handleModelWin(o){
   win.on('select' , function(e){
 
     if(o.dispatcher){
-      Alloy.Globals.dispatcher.trigger(o.dispatcher, e);
+      Alloy.Globals.events.trigger(o.dispatcher, e);
     }
 
     close();
@@ -384,7 +384,7 @@ function handleModelWin(o){
 
 }
 
-Alloy.Globals.dispatcher.on('openWindow', handleModelWin);
+Alloy.Globals.events.on('openWindow', handleModelWin);
 
 
 /**
@@ -395,8 +395,8 @@ Alloy.Globals.dispatcher.on('openWindow', handleModelWin);
 function logout(){
 
   Ti.App.Properties.setBool('isConnected',false);
-  Alloy.Globals.dispatcher.off('openWindow');
-  Alloy.Globals.dispatcher.off('findRowMenu');
+  Alloy.Globals.events.off('openWindow');
+  Alloy.Globals.events.off('findRowMenu');
 
   if(OS_IOS){
     $.drawer.close();

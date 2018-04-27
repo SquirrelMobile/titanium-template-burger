@@ -28,7 +28,7 @@ function actions(e){
     break;
     case 'home':
       $.win.close();
-      Alloy.Globals.dispatcher.trigger("findRowMenu", { id : "home"});
+      Alloy.Globals.events.trigger("findRowMenu", { id : "home"});
     break;
     default:
     break;
