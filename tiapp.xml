@@ -17,6 +17,7 @@
   <!-- PUT YOUR ONE SIGNAL APP ID HERE -->
   <!-- <property name="OneSignal_AppID" type="string">11111111-1111-1111-1111-111111111111</property> -->
   <property name="ti.android.root.reappears.restart" type="bool">true</property>
+  <property name="ti.android.bug2373.finishfalseroot" type="bool">true</property>
   <ios>
     <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
     <use-app-thinning>true</use-app-thinning>
