@@ -18,6 +18,9 @@
     "pushwoosh" : {
       "projectId" : "XXXX-XXXX",
       "gcmID" : "XXXXXXXXXXXX"
+    },
+    "crash" : {
+      "email" : "support@squirrel.fr"
     }
   },
   "env:development": {
