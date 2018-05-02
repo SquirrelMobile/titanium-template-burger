@@ -39,7 +39,7 @@
 }
 
 "#title": {
-  font : { fontFamily: Alloy.CFG.FONTS.light, fontSize: 14 },
+  font : { fontFamily: Alloy.CFG.FONTS.bold, fontSize: 16 },
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   color : "white",
   left: 50 ,
