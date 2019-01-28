@@ -169,3 +169,17 @@ exports.createTextField = function (args) {
         return Ti.UI.createTextField(args);
     }
 };
+
+exports.createView = function (args) {
+
+    if (OS_IOS) {
+
+        return Ti.UI.createView(_.extend(args,{viewShadowColor: "#55000000",	viewShadowOffset: {x:0, y:(args.offset? args.offset : 5)},	viewShadowRadius: 3}));
+    } else {
+        var opt = {};
+        if (!args.borderRadius) {
+          opt = {borderRadius : 0};
+        }
+        return Ti.UI.Android.createCardView(_.extend(args,opt));
+    }
+};
