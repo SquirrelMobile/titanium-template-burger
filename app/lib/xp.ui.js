@@ -155,20 +155,45 @@ var isAndroid = Ti.Platform.osname == "android";
 /**
  * Fixes the auto focus on textfield on android
  */
-exports.createTextField = function (args) {
-    if (isAndroid) {
-        var view = Ti.UI.createTextField(args);
+ exports.createTextField = function (args) {
+   if (isAndroid) {
+       var view = Ti.UI.createTextField(args);
 
-        // fix auto focus
-        view.addEventListener('focus', function focusFix(e) {
-            e.source.blur();
-            e.source.removeEventListener('focus', focusFix);
-        });
-        return view;
-    } else {
-        return Ti.UI.createTextField(args);
-    }
-};
+       // fix auto focus
+       // view.addEventListener('focus', function focusFix(e) {
+       //     e.source.blur();
+       //     e.source.removeEventListener('focus', focusFix);
+       // });
+       return view;
+   } else {
+
+     var toolbar = Alloy.createController("/partials/keytoolbarios",args);
+     var textField = Ti.UI.createTextField(args);
+
+     textField.addEventListener("reload",function(e){
+       toolbar.reload(e);
+     });
+
+     toolbar.on("close",function(){
+       textField.blur();
+     });
+
+     toolbar.on("previous",function(){
+       textField.fireEvent("previous");
+     });
+
+     toolbar.on("next",function(){
+       textField.fireEvent("return");
+     });
+
+     textField.keyboardToolbar = toolbar.getView();
+
+     return textField;
+
+   }
+
+ };
+
 
 exports.createView = function (args) {
 
