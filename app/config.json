@@ -44,6 +44,7 @@
     "de.manumaticx.pagingcontrol": "*",
     "input-materialdesign": "*",
     "fr.squirrel.tutorial": "*",
-    "com.caffeinalab.titanium.calendar": "*"
+    "com.caffeinalab.titanium.calendar": "*",
+    "fr.squirrel.zoomimage": "*"
   }
 }
