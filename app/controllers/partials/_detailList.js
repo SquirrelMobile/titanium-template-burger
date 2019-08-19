@@ -24,7 +24,9 @@ var listType = "list";
 
   Alloy.CFG.baseurl = "https://jsonplaceholder.typicode.com";
   require("net/apiconfig").init();
-  load();
+  _.defer(function() {
+    load();
+  });
   if (OS_ANDROID) {
     $.list.header.on("change", function(e) {
       Alloy.Globals.log.info(e.row);

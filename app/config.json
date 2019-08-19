@@ -26,13 +26,13 @@
     "logEnable": true
   },
   "env:development": {
-    "baseurl": "https://jsonplaceholder.typicode.com"
+    "baseurl": "http://www.squirrel.fr"
   },
   "env:test": {
-    "baseurl": "https://jsonplaceholder.typicode.com"
+    "baseurl": "http://www.squirrel.fr"
   },
   "env:production": {
-    "baseurl": "https://jsonplaceholder.typicode.com"
+    "baseurl": "http://www.squirrel.fr"
   },
   "os:android": {},
   "os:blackberry": {},

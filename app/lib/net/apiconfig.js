@@ -47,7 +47,7 @@ function alertDialog(text, title) {
         autoValidateParams: false,
         validatesSecureCertificate: false,
         timeout: -1,
-        url: _exports.baseurl,
+        url: Alloy.CFG.baseurl,
         requestHeaders: {
           "Content-Type": "application/json"
         },
