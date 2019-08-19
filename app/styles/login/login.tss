@@ -64,6 +64,7 @@
   font : { fontFamily: Alloy.CFG.FONTS.regular, fontSize: 15 }
 }
 
-'#win': {
-  theme :"Theme.Login"
+'#win[platform=android]': {
+  theme :"Theme.Login",
+  activityEnterAnimation: Titanium.UI.Android.TRANSITION_FADE_IN
 }

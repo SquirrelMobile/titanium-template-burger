@@ -11,7 +11,7 @@
 					<Require src="/partials/_textfield" id="password" onNext="connect" onClickLblRight="activePasswordMask" onPrevious="previous" previous="login" ></Require>
 					<Button class="btn" top="50" title="L('connect')" onClick="connect" />
 
-					<Button class="btn" title="L('register')" onClick="openWin" type="signup" />
+					<Button class="btn" title="L('register')" onClick="openWin" type="signup"  />
 
 					<Label id="lostPassword" class="lblBtn" onClick="openWin" type="lostPassword" />
 
