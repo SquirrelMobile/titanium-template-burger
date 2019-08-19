@@ -14,6 +14,9 @@
     back: {
       visible: true
     },
+    nav: {
+      backgroundColor: "white"
+    },
     title: {
       text: L("register")
     }

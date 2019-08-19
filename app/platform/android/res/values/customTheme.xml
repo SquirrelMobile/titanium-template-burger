@@ -26,6 +26,19 @@
       <item name="android:windowLightStatusBar">true</item>
     </style>
 
+
+    <style name="Theme.Login" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="colorControlHighlight">@color/colorHighlight</item>
+        <item name="colorControlActivated">@color/colorActivated</item>
+        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="android:statusBarColor">@color/whiteColor</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
+      </style>
+
     <style name="defaultAnimation">
       <item name="android:windowEnterAnimation">@anim/defaultanimationenter</item>
       <item name="android:windowExitAnimation">@anim/defaultanimation</item>

@@ -66,7 +66,9 @@ function populateData() {
     .map(function(obj) {
       var photo = new Photo(obj);
       return {
-        properties: photo,
+        properties: _.extend(photo, {
+          accessoryType: Titanium.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+        }),
         template: "photo",
         title: {
           text: photo.title

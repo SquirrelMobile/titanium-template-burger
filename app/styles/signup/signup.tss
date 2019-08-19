@@ -59,5 +59,6 @@
 }
 
 '#win[platform=android]': {
+  theme :"Theme.Login",
   activityEnterTransition: Ti.UI.Android.TRANSITION_SLIDE_LEFT
 }

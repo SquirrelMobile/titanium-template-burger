@@ -7,6 +7,6 @@
 
 '#title': {
   left: 115,
-  right: 5,
+  right: 30,
   height: Ti.UI.SIZE
 }

@@ -63,3 +63,7 @@
 ".lblBtn": {
   font : { fontFamily: Alloy.CFG.FONTS.regular, fontSize: 15 }
 }
+
+'#win': {
+  theme :"Theme.Login"
+}

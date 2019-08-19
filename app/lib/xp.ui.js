@@ -198,20 +198,49 @@ exports.createTextField = function(args) {
 };
 
 exports.createView = function(args) {
-  if (OS_IOS) {
+  if (args.shadowStyle) {
+    if (OS_IOS) {
+      return Ti.UI.createView(
+        _.extend(args, {
+          viewShadowColor: "#55000000",
+          viewShadowOffset: { x: 0, y: args.offset ? args.offset : 5 },
+          viewShadowRadius: 3
+        })
+      );
+    } else {
+      var opt = {};
+      if (!args.borderRadius) {
+        opt = { borderRadius: 0 };
+      }
+      return Ti.UI.Android.createCardView(_.extend(args, opt));
+    }
+  } else if (args.clickStyle) {
+    if (OS_IOS) {
+      var view = Ti.UI.createView(args);
+      view.addEventListener("touchStart", function() {
+        view.opacity = 0.3;
+      });
+      view.addEventListener("touchEnd", function() {
+        view.opacity = args.opacity ? args.opacity : 1;
+      });
+      return view;
+    } else {
+      return Ti.UI.createView(
+        _.extend(args, {
+          backgroundColor: "white",
+          touchFeedback: true,
+          touchFeedbackColor: Alloy.CFG.COLORS.main
+        })
+      );
+    }
+  } else {
     return Ti.UI.createView(
       _.extend(args, {
-        viewShadowColor: "#55000000",
-        viewShadowOffset: { x: 0, y: args.offset ? args.offset : 5 },
-        viewShadowRadius: 3
+        backgroundColor: "white",
+        touchFeedback: true,
+        touchFeedbackColor: Alloy.CFG.COLORS.main
       })
     );
-  } else {
-    var opt = {};
-    if (!args.borderRadius) {
-      opt = { borderRadius: 0 };
-    }
-    return Ti.UI.Android.createCardView(_.extend(args, opt));
   }
 };
 
