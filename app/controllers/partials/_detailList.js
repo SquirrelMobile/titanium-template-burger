@@ -13,6 +13,15 @@ var listType = "list";
  * @param  {Arguments} args Arguments passed to the controller
  */
 (function constructor(args) {
+  $.navbar.load({
+    logo: {
+      visible: true
+    },
+    burger: {
+      visible: true
+    }
+  });
+
   Alloy.CFG.baseurl = "https://jsonplaceholder.typicode.com";
   require("net/apiconfig").init();
   load();
@@ -115,16 +124,14 @@ function populateDatainColumn() {
 }
 
 function handleClick(e) {
+  Alloy.Globals.log.info("test" + e.bindId);
   var obj = {
     controller: "win",
     data: {
       controller: "partials/_detail",
       navbar: {
-        btnLeft: {
+        back: {
           visible: true
-        },
-        logo: {
-          visible: false
         },
         title: {
           visible: true,
@@ -134,7 +141,7 @@ function handleClick(e) {
       data: listType === "list" ? e : e[e.bindId]
     }
   };
-  Alloy.Globals.events.trigger("openWindowInTab", obj);
+  Alloy.Globals.events.trigger("openWindow", obj);
 }
 
 var urlExample =

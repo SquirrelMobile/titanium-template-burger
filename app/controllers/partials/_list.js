@@ -43,8 +43,7 @@ function headerClick(e) {
 function handleClick(e) {
   var row = e.section.getItemAt(e.itemIndex),
     prop = row.properties;
-
-  Alloy.Globals.log.info(prop);
+  Ti.API.log("tst");
   $.trigger(
     "click",
     _.extend(prop, {

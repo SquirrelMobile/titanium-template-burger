@@ -43,7 +43,7 @@ function alertDialog(text, title) {
       var api = new reste();
 
       api.config({
-        debug: true,
+        debug: Alloy.CFG.logEnable,
         autoValidateParams: false,
         validatesSecureCertificate: false,
         timeout: -1,

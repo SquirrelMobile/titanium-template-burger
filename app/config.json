@@ -22,7 +22,8 @@
     },
     "crash": {
       "email": "support@squirrel.fr"
-    }
+    },
+    "logEnable": true
   },
   "env:development": {
     "baseurl": "https://jsonplaceholder.typicode.com"
