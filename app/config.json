@@ -4,8 +4,8 @@
       "light": "Helvetica-Light",
       "regular": "Helvetica-Regular",
       "bold": "Helvetica-Bold",
-      "fabrands": "FontAwesome5BrandsRegular",
-      "fareg": "FontAwesome5ProRegular",
+      "fabrands": "FontAwesome5Brands-Regular",
+      "fareg": "FontAwesome5Pro-Regular",
       "falight": "FontAwesome5ProLight",
       "fa": "FontAwesome5Pro-Solid"
     },
