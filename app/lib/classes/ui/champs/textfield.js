@@ -350,6 +350,11 @@ exports.createTextField = function(args) {
     textField.setValue(val);
   };
 
+  textField.view.setPasswordMask = function(bool) {
+    textField.champ.passwordMask = bool;
+    textField.imageRightView.text = bool ? "\uf06e" : "\uf070";
+  };
+
   textField.view.listener = function(name, event) {
     textField.champ.addEventListener(name, event);
   };

@@ -4,6 +4,7 @@
  *
  */
 import { AlertDialog } from "classes/ui/dialog";
+var champs = $.form.getChamps();
 /**
  * @method Controller
  * Display login view
@@ -16,6 +17,11 @@ import { AlertDialog } from "classes/ui/dialog";
       activity.finish();
     });
   }
+
+  champs.password.addEventListener("click", function(e) {
+    champs.password.passwordMask = !champs.password.passwordMask;
+    champs.password.setPasswordMask(!champs.password.passwordMask);
+  });
 
   // $.login.listener("return", function() {
   //   $.password.focus();
