@@ -7,7 +7,7 @@
 						<Label class="titleLbl lblTitleLight" />
 					</View>
 					<Require src="/component/form" id="form" onValid="connect"></Require>
-					<Button class="btn" title="L('register')" onClick="openWin" type="signup" />
+					<Button  width="185" title="L('register')" onClick="openWin" type="signup" />
 
 					<Label id="lostPassword" class="lblBtn" onClick="openWin" type="lostPassword" />
 

@@ -100,7 +100,7 @@
     <module>com.williamrijksen.onesignal</module>
     <module platform="android">ti.bottomsheet</module>
     <module platform="android">com.skypanther.tirotate</module>
-    <module platform="android">org.iotashan.titouchimageview</module>
+    <module platform="android">org.iotashan.TiTouchImageView</module>
     <module platform="android">fr.squirrel.pdfview</module>
   </modules>
   <deployment-targets>
