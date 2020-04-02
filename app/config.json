@@ -1,51 +1,53 @@
 {
-  "global": {
-    "FONTS": {
-      "light": "Helvetica-Light",
-      "regular": "Helvetica-Regular",
-      "bold": "Helvetica-Bold",
-      "fabrands": "FontAwesome5Brands-Regular",
-      "fareg": "FontAwesome5Pro-Regular",
-      "falight": "FontAwesome5ProLight",
-      "fa": "FontAwesome5Pro-Solid"
-    },
-    "COLORS": {
-      "main": "#f89a3c",
-      "main2": "#f15b2a",
-      "black": "#222222",
-      "gray": "#dbdfe2",
-      "text": "#9896a4"
-    },
-    "pushwoosh": {
-      "projectId": "XXXX-XXXX",
-      "gcmID": "XXXXXXXXXXXX"
-    },
-    "crash": {
-      "email": "support@squirrel.fr"
-    },
-    "logEnable": true
-  },
-  "env:development": {
-    "baseurl": "http://www.squirrel.fr"
-  },
-  "env:test": {
-    "baseurl": "http://www.squirrel.fr"
-  },
-  "env:production": {
-    "baseurl": "http://www.squirrel.fr"
-  },
-  "os:android": {},
-  "os:blackberry": {},
-  "os:ios": {},
-  "os:mobileweb": {},
-  "os:windows": {},
-  "dependencies": {
-    "nl.fokkezb.drawer": "*",
-    "nl.fokkezb.loading": "*",
-    "de.manumaticx.pagingcontrol": "*",
-    "input-materialdesign": "*",
-    "fr.squirrel.tutorial": "*",
-    "com.caffeinalab.titanium.calendar": "*",
-    "fr.squirrel.zoomimage": "*"
-  }
+	"global": {
+		"FONTS": {
+			"light": "Helvetica-Light",
+			"regular": "Helvetica-Regular",
+			"bold": "Helvetica-Bold",
+			"fabrands": "FontAwesome5Brands-Regular",
+			"faduo": "FontAwesome5Duotone-Solid",
+			"fareg": "FontAwesome5Pro-Regular",
+			"falight": "FontAwesome5Pro-Light",
+			"fa": "FontAwesome5Pro-Solid"
+		},
+		"COLORS": {
+			"main": "#f89a3c",
+			"main2": "#f15b2a",
+			"black": "#222222",
+			"gray": "#dbdfe2",
+			"text": "#9896a4"
+		},
+		"pushwoosh": {
+			"projectId": "XXXX-XXXX",
+			"gcmID": "XXXXXXXXXXXX"
+		},
+		"crash": {
+			"email": "support@squirrel.fr"
+		},
+		"logEnable": true
+	},
+	"env:development": {
+		"baseurl": "http://www.squirrel.fr"
+	},
+	"env:test": {
+		"baseurl": "http://www.squirrel.fr"
+	},
+	"env:production": {
+		"baseurl": "http://www.squirrel.fr"
+	},
+	"os:android": {},
+	"os:blackberry": {},
+	"os:ios": {},
+	"os:mobileweb": {},
+	"os:windows": {},
+	"dependencies": {
+		"nl.fokkezb.drawer": "*",
+		"nl.fokkezb.loading": "*",
+		"de.manumaticx.pagingcontrol": "*",
+		"input-materialdesign": "*",
+		"fr.squirrel.tutorial": "*",
+		"com.caffeinalab.titanium.calendar": "*",
+		"fr.squirrel.zoomimage": "*",
+		"com.alcoapps.socialshare": "*"
+	}
 }

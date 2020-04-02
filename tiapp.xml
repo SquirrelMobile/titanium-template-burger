@@ -66,6 +66,8 @@
             <string>en</string>
             <string>fr</string>
         </array>
+        <key>UIUserInterfaceStyle</key>
+        <string>Light</string>
       </dict>
     </plist>
   </ios>
@@ -92,6 +94,8 @@
     <module>av.imageview</module>
     <module>ti.compression</module>
     <module>com.williamrijksen.onesignal</module>
+    <module>ti.notificationbanner</module>
+    <module platform="iphone">dk.napp.social</module>
     <module platform="android">ti.bottomsheet</module>
     <module platform="android">com.skypanther.tirotate</module>
     <module platform="android">org.iotashan.TiTouchImageView</module>
@@ -103,7 +107,7 @@
     <target device="iphone">true</target>
     <target device="mobileweb">false</target>
   </deployment-targets>
-  <sdk-version>8.3.0.GA</sdk-version>
+  <sdk-version>9.0.0.GA</sdk-version>
   <plugins>
     <plugin>ti.alloy</plugin>
   </plugins>
