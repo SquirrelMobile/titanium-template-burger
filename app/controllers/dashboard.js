@@ -194,7 +194,6 @@ function loadView(e) {
 	//if we click on the active menu item
 	if (currentIndex === index) {
 		$.drawer.closeLeftWindow();
-		$.drawer.closeRightWindow();
 	} else {
 		Alloy.Globals.backController = currentData;
 		currentData = data;
@@ -223,10 +222,9 @@ function loadView(e) {
 			//force menu close
 			if (!dontOpen) {
 				$.drawer.closeLeftWindow();
-				$.drawer.closeRightWindow();
 			}
 			//cleanup centerWindow
-			$.contentWrapper.removeAllChildren();
+			//$.contentWrapper.removeAllChildren();
 
 			//$.titleWindow.text = currentProperties.titleWindow;
 
@@ -238,11 +236,12 @@ function loadView(e) {
 					}
 				}
 				currentController = Alloy.createController(controllerName, _.extend(data, rowMenu));
-				$.contentWrapper.add(currentController.getView());
+				OS_IOS
+					? $.contentWrapper.add(currentController.getView())
+					: ($.drawer.centerView = currentController.getView());
 			});
 		} else {
 			$.drawer.closeLeftWindow();
-			$.drawer.closeRightWindow();
 
 			//cleanup centerWindow
 			$.contentWrapper.removeAllChildren();
@@ -255,8 +254,9 @@ function loadView(e) {
 						currentController.clean();
 					}
 				}
-				currentController = Alloy.createController(controllerName, data);
-				$.contentWrapper.add(currentController.getView());
+				OS_IOS
+					? $.contentWrapper.add(currentController.getView())
+					: ($.drawer.centerView = currentController.getView());
 			});
 		}
 	}
@@ -306,8 +306,8 @@ function handleModelWin(o) {
 		openOutSideNav: false,
 	});
 
-	var win = Alloy.createController(o.controller, o.data);
-	currentWin = win.getView();
+	var win = Alloy.createController(o.controller, o.data),
+		currentWin = win.getView();
 
 	function close() {
 		if (OS_IOS) {

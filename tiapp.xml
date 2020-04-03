@@ -90,7 +90,7 @@
   </android>
   <modules>
     <module>ti.animation</module>
-    <module>dk.napp.drawer</module>
+    <module platform="iphone">dk.napp.drawer</module>
     <module>av.imageview</module>
     <module>ti.compression</module>
     <module>com.williamrijksen.onesignal</module>

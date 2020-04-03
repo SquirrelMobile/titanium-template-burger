@@ -1,5 +1,5 @@
 <Alloy>
-	<NavigationWindow module="xp.ui" id="nav">
+	<NavigationWindow id="nav">
 		<Window id="win">
 			<ScrollView class="container">
 				<View layout="vertical" left="20" right="20" height="Ti.UI.SIZE">

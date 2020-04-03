@@ -191,3 +191,6 @@ function handleChange(e) {
 		displayList();
 	}
 }
+$.clean = () => {
+	$.destroy();
+};
