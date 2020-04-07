@@ -124,7 +124,6 @@
       optionDialog : {
         title: 'Titanium rocks!',
         options: [ 'Option A', 'Option B' ],
-        cancel: 1,
         cancelable: true
       },
       textArea : {

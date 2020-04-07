@@ -46,12 +46,12 @@ _.each(args.champs, function(e, i) {
 function handleValid() {
 	var obj = {};
 	_.each(champs, function(e, i) {
+		console.log(e.id);
 		if (e.type !== "valid") {
 			obj[e.id] = e.getValue();
 		}
 	});
 	if (verif(champs)) {
-		Ti.API.log(JSON.stringify(obj));
 		$.trigger("valid", obj);
 	}
 }
@@ -144,7 +144,15 @@ function blurAll(e) {
 $.blurAll = blurAll;
 
 function handleNext(e) {
-	var id = OS_IOS ? e.id : e.source.next.id;
+	var id = e.source.next.id;
+	var find = _.findWhere(champs, { id: id });
+	if (find) {
+		find.focus();
+	}
+}
+
+function handlePrevious(e) {
+	var id = e.source.previous.id;
 	var find = _.findWhere(champs, { id: id });
 	if (find) {
 		find.focus();

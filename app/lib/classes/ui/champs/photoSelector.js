@@ -56,7 +56,7 @@ class PhotoSelector extends Field {
 	blur() {}
 
 	getValue() {
-		return that.value;
+		return this.value;
 	}
 
 	setValue(val) {}

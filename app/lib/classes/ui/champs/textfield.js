@@ -3,7 +3,13 @@ import { Field } from "classes/ui/champs/field";
 class TextField extends Field {
 	constructor(obj) {
 		super(obj);
-		this.textField = Ti.UI.createTextField(Alloy.Globals.form.textField);
+		this.textField = require("/xp.ui").createTextField(
+			_.extend(Alloy.Globals.form.textField, {
+				next: obj.next,
+				hintText: obj.textField && obj.textField.hintText ? obj.textField.hintText : "",
+				previous: obj.previous,
+			}),
+		);
 		if (obj.textField) {
 			this.textField.applyProperties(obj.textField);
 		}

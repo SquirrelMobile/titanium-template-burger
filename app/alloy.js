@@ -1,8 +1,6 @@
 console.log("DIRECTORY IS => " + Ti.Filesystem.applicationDataDirectory);
 import { hasNotch } from "ti.detect";
-import { form } from "ti.form";
 require("/dao/cache");
-Alloy.Globals.form = form;
 const AvImageview = require("av.imageview");
 
 if (Ti.version.replace(/[.]/gi, "").replace("GA", "") >= 900) {

@@ -1,5 +1,5 @@
 import { FakeTextField } from "classes/ui/champs/fakeTextField";
-import { Dialog } from "classes/ui/genericDialog";
+// import { Dialog } from "classes/ui/genericDialog";
 
 class TextFieldOptionDialog extends FakeTextField {
 	constructor(obj) {
@@ -21,12 +21,12 @@ class TextFieldOptionDialog extends FakeTextField {
 	}
 
 	getValue() {
-		return this.faketextField ? that.faketextField.value : null;
+		return this.faketextField ? this.faketextField.value : null;
 	}
 
 	setValue(val) {
-		that.faketextField.text = val;
-		that.faketextField.value = val;
+		this.faketextField.text = val;
+		this.faketextField.value = val;
 	}
 
 	checkRequired(obj) {

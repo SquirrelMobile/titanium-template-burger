@@ -12,7 +12,9 @@ class FakeTextField extends TextField {
 				height: Ti.UI.FILL,
 			}),
 		);
-		this.faketextField.applyProperties(obj.textField);
+		if (obj.textField) {
+			this.faketextField.applyProperties(obj.textField);
+		}
 		this.fieldView.add(this.faketextField);
 	}
 
