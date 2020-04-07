@@ -15,7 +15,8 @@
 			"main2": "#f15b2a",
 			"black": "#222222",
 			"gray": "#dbdfe2",
-			"text": "#9896a4"
+			"text": "#9896a4",
+			"hintText": "#9896a4"
 		},
 		"pushwoosh": {
 			"projectId": "XXXX-XXXX",
@@ -41,6 +42,8 @@
 	"os:mobileweb": {},
 	"os:windows": {},
 	"dependencies": {
+		"fr.squirrel.geocoding": "*",
+		"fr.squirrel.prefixPhone": "*",
 		"nl.fokkezb.drawer": "*",
 		"nl.fokkezb.loading": "*",
 		"de.manumaticx.pagingcontrol": "*",

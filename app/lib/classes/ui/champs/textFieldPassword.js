@@ -1,0 +1,35 @@
+import { TextField } from "classes/ui/champs/textField";
+
+class TextFieldPassword extends TextField {
+	constructor(obj) {
+		super(obj);
+		this.createButton(
+			{
+				title: "\uf06e",
+			},
+			"buttonRight",
+		);
+		this.textField.passwordMask = true;
+		var that = this;
+		this.buttonRight.addEventListener("click", function() {
+			that.textField.passwordMask = !that.textField.passwordMask;
+			that.buttonRight.title = that.textField.passwordMask ? "\uf06e" : "\uf070";
+			that.textField.setPasswordMask(that.textField.passwordMask);
+		});
+	}
+
+	checkRequired(obj) {
+		return this.getValue() !== null;
+	}
+}
+
+exports.TextFieldPassword = TextFieldPassword;
+
+exports.createTextField = e => {
+	let textfield = new TextFieldPassword(e);
+	textfield.parent.super = () => {
+		return textfield;
+	};
+
+	return textfield.parent;
+};

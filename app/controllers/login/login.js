@@ -17,11 +17,13 @@ var champs = $.form.getChamps();
 			activity.finish();
 		});
 	}
+	// champs.email.setValue("didier@squirrel.fr");
+	// console.log("test", champs.password.getValue());
 
-	champs.password.addEventListener("click", function(e) {
-		champs.password.passwordMask = !champs.password.passwordMask;
-		champs.password.setPasswordMask(champs.password.passwordMask);
-	});
+	// champs.password.parent.addEventListener("click", function(e) {
+	// 	champs.password.passwordMask = !champs.password.passwordMask;
+	// 	champs.password.setPasswordMask(champs.password.passwordMask);
+	// });
 })($.args);
 
 /**
@@ -58,6 +60,7 @@ function connect(e) {
 	}
 
 	if (e.password && e.email) {
+		console.log(e);
 		/*Alloy.Globals.loading.show(L("loading"));
       //WS LOGIN
       var obj = {
@@ -68,18 +71,18 @@ function connect(e) {
       Alloy.Globals.Api.signin({body:obj},function(e){
 
       });*/
-		Ti.App.Properties.setObject("user", {
-			_id: 1,
-			gender: "m",
-			lastname: "Marston",
-			firstname: "John",
-			email: "john@test.fr",
-			phone: "0692012345",
-			createdAt: new Date().toString(),
-			updatedAt: new Date().toString(),
-		});
-		Ti.App.Properties.setBool("isConnected", true);
-		Alloy.createController("index").getView();
+		// Ti.App.Properties.setObject("user", {
+		// 	_id: 1,
+		// 	gender: "m",
+		// 	lastname: "Marston",
+		// 	firstname: "John",
+		// 	email: "john@test.fr",
+		// 	phone: "0692012345",
+		// 	createdAt: new Date().toString(),
+		// 	updatedAt: new Date().toString(),
+		// });
+		// Ti.App.Properties.setBool("isConnected", true);
+		// Alloy.createController("index").getView();
 	}
 }
 

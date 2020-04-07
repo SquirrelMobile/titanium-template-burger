@@ -1,76 +1,76 @@
-import { Champs } from "classes/ui/champs/champ";
+import { Field } from "classes/ui/champs/field";
 
-class CheckBox extends Champs {
+class CheckBox extends Field {
 	constructor(obj) {
 		super(obj);
-		this.container = Ti.UI.createView({
+		this.container.height = 0;
+		this.containerCheckBox = Ti.UI.createView({
 			height: Ti.UI.SIZE,
 			layout: "horizontal",
 			horizontalWrap: false,
 			width: Ti.UI.FILL,
 		});
-		this.value = false;
-		this.champ = require("ti.animation").createAnimationView({
+		this.checkBox = require("ti.animation").createAnimationView({
 			height: 45,
 			width: 45,
 			visible: true,
-			background: "white",
 			zIndex: 99,
 			startFrame: 30,
 			endFrame: 75,
 			file: "/animCheckbox.json",
 		});
-		// this.label = Alloy.createWidget(
-		//   "nl.fokkezb.html2as.widget",
-		//   obj.lblView
-		// ).getView();
 
+		if (obj.checkBox) {
+			this.checkBox.applyProperties(obj.checkBox);
+		}
+		this.value = false;
 		this.label = Ti.UI.createLabel(obj.lblView);
-		this.champ.setFrame(1);
+		this.checkBox.setFrame(1);
 		var _this = this;
-		this.champ.addEventListener("click", function() {
+		this.checkBox.addEventListener("click", function() {
 			_this.value = !_this.value;
-			Ti.API.log(_this.value);
 			_this.setValue(_this.value);
 		});
-		this.container.add(this.champ);
-		this.container.add(this.label);
-		this.view.add(this.container);
-		this.champ.start(0, 30);
-		this.champ.getValue = function() {
-			return _this.value;
-		};
+		this.containerCheckBox.add(this.checkBox);
+		this.containerCheckBox.add(this.label);
+		this.parent.add(this.containerCheckBox);
+		this.checkBox.start(0, 30);
+	}
+
+	focus() {}
+
+	blur() {}
+
+	getValue() {
+		return this.value;
 	}
 
 	setValue(bool) {
 		if (bool) {
-			this.champ.stop();
-			this.champ.start(30, 75);
+			this.checkBox.stop();
+			this.checkBox.start(30, 75);
 		} else {
-			this.champ.stop();
-			this.champ.start(95, 150);
-			// this.checkboxView.start(75.0, 0.0);
+			this.checkBox.stop();
+			this.checkBox.start(95, 150);
 		}
 	}
 }
 
-exports.createCheckbox = function(args) {
-	var checkBox = new CheckBox({
+exports.CheckBox = CheckBox;
+
+exports.createCheckbox = e => {
+	let checkBox = new CheckBox({
 		lblView: {
-			html: args.required ? args.text + " *" : args.text,
-			text: args.required ? args.text + " *" : args.text,
+			html: e.required ? e.text + " *" : e.text,
+			text: e.required ? e.text + " *" : e.text,
 			width: Ti.UI.FILL,
 			font: { fontFamily: Alloy.CFG.FONTS.regular, fontSize: 13 },
 			color: "#0A0C2A",
 		},
 	});
+	checkBox.parent.super = () => {
+		return checkBox;
+	};
 
-	checkBox.view.listener = function(name, event) {
-		checkBox.label.addEventListener(name, event);
-	};
-	checkBox.view.applyProperties(args);
-	checkBox.view.getValue = function() {
-		return checkBox.getValue();
-	};
-	return checkBox.view;
+	return checkBox.parent;
 };

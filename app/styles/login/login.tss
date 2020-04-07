@@ -46,39 +46,148 @@
 '#form': {
   champs : [
     {
-      id: "email",
-      top : 0,
-      type : "textfield",
-      hintTextTitle:L('yourEmail'),
-      required : true,
-      imageRight:true,
-      imageRightView :{
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        text : "\uf0e0",
-        zIndex: 999,
-        color : Alloy.CFG.COLORS.main,
-        font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 14 },
+      container : {
+        backgroundColor: "transparent",
+        borderColor: "transparent"
       },
+      image : {
+        height: 200,
+  			width: 200,
+  			borderRadius: 100,
+        backgroundColor: "white",
+      },
+      type : "PhotoSelector",
+    },
+    {
+      id: "email",
+      title : {
+        text : "Email",
+      },
+      textField : {
+        hintText : "Entre ton email",
+      },
+      type : "textFieldEmail",
+      required : true,
+    },
+    {
+      id: "phone",
+      title : {
+        text : "Email",
+      },
+      textField : {
+        hintText : "Entre ton email",
+      },
+      type : "textFieldPhone",
+      required : true,
+    },
+    {
+      id: "date",
+      title : {
+        text : "date",
+      },
+      textField : {
+        hintText : "entre ton date",
+      },
+      type : "textFieldDate",
+      required : true,
+    },
+    {
+      id: "textfield",
+      title : {
+        text : "textfield",
+      },
+      textField : {
+        hintText : "entre ton date",
+      },
+      list : [
+      {text : "list"},{text : "column"}
+      ],
+      type : "textFieldList",
     },
     {
       id: "password",
-      type : "textfield",
+      type : "textFieldPassword",
       passwordMask: true,
-      hintTextTitle:L('yourPassword'),
-      imageRight:true,
-      imageRightView :{
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        text : "\uf06e",
-        zIndex: 999,
-        color : Alloy.CFG.COLORS.main,
-        font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 14 },
+      title : {
+        text : "Mot de passe",
+      },
+      textField : {
+        hintText : L('yourPassword'),
       },
       required : true
     },
     {
+      id: "test2",
+      title : {
+        text : "textfield",
+      },
+      optionDialog : {
+        title: 'Titanium rocks!',
+        options: [ 'Option A', 'Option B' ],
+        cancel: 1,
+        cancelable: true
+      },
+      textArea : {
+          hintText : L('yourPassword'),
+      },
+      type : "textFieldOptionDialog",
+    },
+
+    {
+      id: "test",
+      title : {
+        text : "textfield",
+      },
+      textArea : {
+          hintText : L('yourPassword'),
+      },
+      type : "textArea",
+    },
+    {
+      id: "map",
+      title : {
+        text : "",
+      },
+      container : {
+        height: 100
+      },
+      type : "map",
+    },
+    {
+      id: "test",
+      title : {
+        text : "textfield",
+      },
+      textField : {
+          hintText : L('yourPassword'),
+      },
+      dialog : {
+        title : "example",
+
+      },
+      type : "textFieldGenericPopup",
+    },
+    {
+      text :"qsodijoqfsid oqdsijf qsofij qosijq",
+      type : "label",
+    },
+
+    {
+      id: "checkqsdfqsd",
+      text :"Salut",
+      type : "checkbox",
+    },
+    {
       id: "valid",
-      top: 30,
-      text : L('connect'),
+      button : {
+        backgroundColor: Alloy.CFG.COLORS.main2,
+        width: 185,
+        bottom: 10
+      },
+      label : {
+        text : L('connect'),
+        color: "white",
+      },
       type : "valid",
     }
   ]
