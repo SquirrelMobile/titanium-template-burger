@@ -170,7 +170,26 @@
       text :"qsodijoqfsid oqdsijf qsofij qosijq",
       type : "label",
     },
-
+    {
+      data : [
+       {
+         label : {
+           text : "test"
+         },
+         icon :{
+           text : "\uf00d"
+         }
+       },{
+         label : {
+           text : "test"
+         },
+         icon :{
+           text : "\uf00d"
+         }
+       }
+      ],
+      type : "buttonsMultiple",
+    },
     {
       id: "checkqsdfqsd",
       text :"Salut",

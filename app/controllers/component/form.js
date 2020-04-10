@@ -134,6 +134,7 @@ function addField(e, i) {
 				"textFieldOptionDialog",
 				"PhotoSelector",
 				"textField",
+				"buttonsMultiple",
 				"map",
 			],
 			e.type,
