@@ -9,10 +9,16 @@ class TextFieldEmail extends TextField {
 			},
 			"buttonRight",
 		);
+		this.textField.applyProperties({
+			autofillType: Titanium.UI.AUTOFILL_TYPE_EMAIL,
+			keyboardType: Titanium.UI.KEYBOARD_TYPE_EMAIL,
+		});
 	}
 
-	checkRequired(obj) {
-		return this.getValue() !== null && this.valideEmail(this.getValue());
+	checkError() {
+		return this.getValue() !== null && this.valideEmail(this.getValue())
+			? false
+			: this.errors.EMAIL_NOT_VALIDATED;
 	}
 
 	valideEmail(valeur) {

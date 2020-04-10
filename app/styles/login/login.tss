@@ -126,7 +126,7 @@
         options: [ 'Option A', 'Option B' ],
         cancelable: true
       },
-      textArea : {
+      textField : {
           hintText : L('yourPassword'),
       },
       type : "textFieldOptionDialog",

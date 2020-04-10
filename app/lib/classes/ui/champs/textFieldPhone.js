@@ -4,22 +4,29 @@ class TextFieldPhone extends TextField {
 	constructor(obj) {
 		super(obj);
 		var widthPrefix = 70;
+		this.PhoneNumber = require("awesome-phonenumber");
 		this.prefix = Ti.UI.createLabel({
 			text: "---",
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			width: widthPrefix,
 			left: 0,
 		});
+		if (obj.prefix) {
+			this.prefix.applyProperties(obj.prefix);
+		}
+
 		this.createButton(
 			{
 				title: "\uf095",
 			},
 			"buttonRight",
 		);
-		if (obj.prefix) {
-			this.prefix.applyProperties(obj.prefix);
-		}
-		this.textField.keyboardType = Ti.UI.KEYBOARD_TYPE_PHONE_PAD;
+
+		this.textField.applyProperties({
+			keyboardType: Ti.UI.KEYBOARD_TYPE_PHONE_PAD,
+			left: widthPrefix,
+			autofillType: Titanium.UI.AUTOFILL_TYPE_PHONE,
+		});
 		this.separator = Ti.UI.createView({
 			height: Ti.UI.FILL,
 			backgroundColor: Alloy.CFG.COLORS.black,
@@ -37,13 +44,26 @@ class TextFieldPhone extends TextField {
 			});
 			c.getView().open();
 		});
-		this.textField.left = widthPrefix;
 		this.container.add(this.prefix);
 		this.container.add(this.separator);
 	}
 
-	checkRequired(obj) {
-		return this.getValue() !== null && this.valideEmail(this.getValue());
+	checkError(obj) {
+		return this.checkIfPhoneIsValid() ? false : this.errors.PHONE_NOT_VALIDATED;
+	}
+
+	isValid(tel, prefix) {
+		let PhoneNumber = require("awesome-phonenumber");
+		var pn = new PhoneNumber(tel, prefix || " ");
+		return pn.isValid();
+	}
+
+	checkIfPhoneIsValid() {
+		if (this.prefix && this.prefix.data) {
+			return this.isValid(this.textField.value, this.prefix.data.alpha2);
+		} else {
+			return false;
+		}
 	}
 
 	valideEmail(valeur) {

@@ -1,18 +1,9 @@
-import { TextField } from "classes/ui/champs/textField";
+import { FakeTextField } from "classes/ui/champs/fakeTextField";
 import { Dialog } from "classes/ui/genericDialog";
 
-class TextFieldPopup extends TextField {
+class TextFieldPopup extends FakeTextField {
 	constructor(obj) {
 		super(obj);
-		this.fieldView.remove(this.textField);
-		this.faketextField = Ti.UI.createLabel({
-			width: Ti.UI.FILL,
-			text: obj.textField.hintText,
-			color: Alloy.CFG.COLORS.hintText,
-			height: 40,
-		});
-		this.faketextField.applyProperties(obj.textField);
-		this.fieldView.add(this.faketextField);
 		var _this = this;
 		this.container.addEventListener("click", function() {
 			var dialog = new Dialog({
@@ -29,10 +20,6 @@ class TextFieldPopup extends TextField {
 	setValue(val) {
 		let currentDate = Alloy.Globals.moment(val);
 		_this.faketextField.text = currentDate.format("DD MMMM YYYY");
-	}
-
-	checkRequired(obj) {
-		return this.getValue() !== null;
 	}
 }
 

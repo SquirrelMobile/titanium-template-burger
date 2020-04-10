@@ -4,10 +4,9 @@ class FakeTextField extends TextField {
 	constructor(obj) {
 		super(obj);
 		this.fieldView.remove(this.textField);
-		var hintext = obj.textField ? obj.textField.hintText : "";
 		this.faketextField = Ti.UI.createLabel(
 			_.extend(Alloy.Globals.form.textField, {
-				text: hintext,
+				text: obj.textField ? obj.textField.hintText : "",
 				color: Alloy.CFG.COLORS.hintText,
 				height: Ti.UI.FILL,
 			}),
@@ -28,10 +27,6 @@ class FakeTextField extends TextField {
 
 	setValue(val) {
 		_this.faketextField.text = val;
-	}
-
-	checkRequired(obj) {
-		return this.getValue() !== null;
 	}
 }
 

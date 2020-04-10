@@ -54,11 +54,6 @@ function openWin(e) {
  * @param  {object} e
  */
 function connect(e) {
-	if (!require("core").valideEmail(e.email)) {
-		require("core").alertSimple(L("warning"), L("emailInvalidMsg"));
-		return false;
-	}
-
 	if (e.password && e.email) {
 		console.log(e);
 		/*Alloy.Globals.loading.show(L("loading"));

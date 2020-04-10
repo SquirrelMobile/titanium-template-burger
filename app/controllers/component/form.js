@@ -46,7 +46,6 @@ _.each(args.champs, function(e, i) {
 function handleValid() {
 	var obj = {};
 	_.each(champs, function(e, i) {
-		console.log(e.id);
 		if (e.type !== "valid") {
 			obj[e.id] = e.getValue();
 		}
@@ -70,6 +69,36 @@ function verif(obj) {
 			message: {
 				top: 10,
 				text: L("dialog.missingsField") + "\n\n" + d.join("\n"),
+			},
+			confirm: {
+				text: L("OK"),
+				top: 30,
+				backgroundColor: Alloy.CFG.COLORS.main2,
+				touchFeedback: true,
+				color: "white",
+				width: "99%",
+				click: function() {
+					d.hide();
+				},
+			},
+		});
+		d.show();
+		return false;
+	}
+	var error = [];
+	_.each(obj, function(e) {
+		if (_.isFunction(e.checkError)) {
+			if (e.checkError()) {
+				error.push(e.checkError().text);
+			}
+		}
+	});
+	if (error.length > 0) {
+		var d = new AlertDialog({
+			title: L("warning"), //"Attention",
+			message: {
+				top: 10,
+				text: error.join("\n"),
 			},
 			confirm: {
 				text: L("OK"),
@@ -144,10 +173,12 @@ function blurAll(e) {
 $.blurAll = blurAll;
 
 function handleNext(e) {
-	var id = e.source.next.id;
-	var find = _.findWhere(champs, { id: id });
-	if (find) {
-		find.focus();
+	if (OS_IOS) {
+		var id = e.source.next.id;
+		var find = _.findWhere(champs, { id: id });
+		if (find) {
+			find.focus();
+		}
 	}
 }
 

@@ -93,10 +93,6 @@ class TextFieldList extends TextField {
 		this.textField.value = e;
 		this.textField.val = e;
 	}
-
-	checkRequired(obj) {
-		return this.getValue() !== null;
-	}
 }
 
 exports.TextFieldList = TextFieldList;

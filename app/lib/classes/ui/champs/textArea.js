@@ -33,7 +33,6 @@ class TextArea extends Field {
 		this.textArea.addEventListener("blur", function() {
 			that.container.borderColor = containerBorderColor;
 		});
-		this.checkRequired(obj);
 	}
 
 	focus() {
@@ -50,10 +49,6 @@ class TextArea extends Field {
 
 	setValue(val) {
 		this.textArea.value = val;
-	}
-
-	checkRequired(obj) {
-		return this.textArea.value.length > 0 || this.required;
 	}
 }
 

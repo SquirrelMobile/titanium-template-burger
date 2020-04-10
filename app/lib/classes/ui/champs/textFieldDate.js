@@ -45,10 +45,6 @@ class TextFieldDate extends FakeTextField {
 		let currentDate = Alloy.Globals.moment(val);
 		_this.faketextField.text = currentDate.format("DD MMMM YYYY");
 	}
-
-	checkRequired(obj) {
-		return this.getValue() !== null;
-	}
 }
 
 exports.TextFieldDate = TextFieldDate;

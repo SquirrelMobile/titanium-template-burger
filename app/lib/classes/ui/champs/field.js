@@ -2,7 +2,18 @@ import { Button } from "classes/ui/button";
 
 export class Field {
 	constructor(obj) {
-		this.parent = Ti.UI.createView(Alloy.Globals.form.parent);
+		this.errors = {
+			EMAIL_NOT_VALIDATED: { id: 1, text: "- Format email non valide" },
+			PHONE_NOT_VALIDATED: { id: 2, text: "- Format téléphone non valide" },
+			PASSWORD_NOT_LENGTH: { id: 3, text: "- Mot de passe trop court" },
+		};
+		this.required = obj.required;
+		this.parent = Ti.UI.createView({
+			height: Ti.UI.SIZE,
+			layout: "vertical",
+			width: Ti.UI.FILL,
+		});
+		this.parent.applyProperties(Alloy.Globals.form.parent);
 		this.id = obj.id;
 		this.activeColor = obj.activeColor;
 		if (obj.title) {
@@ -20,6 +31,10 @@ export class Field {
 			_.extend(
 				{
 					height: 40,
+					backgroundColor: "white",
+					borderColor: Alloy.CFG.COLORS.black,
+					borderRadius: 5,
+					touchFeedback: true,
 					width: Ti.UI.FILL,
 				},
 				Alloy.Globals.form.container,
@@ -57,15 +72,15 @@ export class Field {
 	createButton(obj, key) {
 		if (obj) {
 			if (key === "buttonLeft") {
-				this[key] = Ti.UI.createButton(
-					_.extend(
-						{
-							height: Ti.UI.FILL,
-							left: 0,
-						},
-						Alloy.Globals.form.buttonIcons,
-					),
-				);
+				this[key] = Ti.UI.createButton({
+					width: 40,
+					height: Ti.UI.FILL,
+					left: 0,
+					font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 16 },
+					color: "black",
+					backgroundColor: null,
+				});
+				this[key].applyProperties(Alloy.Globals.form.buttonIcons);
 				this[key].applyProperties(obj);
 				this.fieldView.left = 40;
 				this.container.add(this[key]);
@@ -73,6 +88,10 @@ export class Field {
 				this[key] = Ti.UI.createButton(
 					_.extend(
 						{
+							width: 40,
+							font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 16 },
+							color: "black",
+							backgroundColor: null,
 							height: Ti.UI.FILL,
 							right: 0,
 						},

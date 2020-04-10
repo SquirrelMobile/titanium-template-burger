@@ -4,15 +4,24 @@ import { FakeTextField } from "classes/ui/champs/fakeTextField";
 class TextFieldOptionDialog extends FakeTextField {
 	constructor(obj) {
 		super(obj);
+		this.createButton(
+			{
+				title: "\uf0d7",
+			},
+			"buttonRight",
+		);
 		var that = this;
+		this.optionDialog = obj.optionDialog;
 		this.container.addEventListener("click", function() {
-			if (obj.optionDialog) {
-				let options = require("xp.ui").createOptionDialog(obj.optionDialog);
+			if (that.optionDialog) {
+				let options = require("xp.ui").createOptionDialog(that.optionDialog);
 				options.addEventListener("click", event => {
-					if (obj.optionDialog.options && obj.optionDialog.options[event.index]) {
-						that.faketextField.text = obj.optionDialog.options[event.index];
-						that.faketextField.value = obj.optionDialog.options[event.index];
-						that.faketextField.color = Alloy.CFG.COLORS.black;
+					if (that.optionDialog.options && that.optionDialog.options[event.index]) {
+						that.faketextField.applyProperties({
+							text: that.optionDialog.options[event.index],
+							value: that.optionDialog.options[event.index],
+							color: Alloy.CFG.COLORS.black,
+						});
 					}
 				});
 				options.show();
@@ -27,10 +36,6 @@ class TextFieldOptionDialog extends FakeTextField {
 	setValue(val) {
 		this.faketextField.text = val;
 		this.faketextField.value = val;
-	}
-
-	checkRequired(obj) {
-		return this.getValue() !== null;
 	}
 }
 

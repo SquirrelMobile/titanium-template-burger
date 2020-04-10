@@ -60,10 +60,6 @@ class PhotoSelector extends Field {
 	}
 
 	setValue(val) {}
-
-	checkRequired(obj) {
-		return this.textArea.value.length > 0 || this.required;
-	}
 }
 
 exports.PhotoSelector = PhotoSelector;
