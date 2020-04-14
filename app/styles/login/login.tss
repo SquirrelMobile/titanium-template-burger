@@ -162,7 +162,7 @@
       },
       dialog : {
         title : "example",
-
+        content : "profil/profil"
       },
       type : "textFieldGenericPopup",
     },

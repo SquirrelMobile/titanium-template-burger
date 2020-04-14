@@ -1,10 +1,12 @@
 
 '.dialogView': {
   left: '10%',
+  top: "5%",
+  bottom: "5%",
   right: '10%',
   elevation:5 ,
   layout: 'vertical',
-  backgroundColor: Alloy.CFG.COLORS.main2
+  backgroundColor: Alloy.CFG.COLORS.main
 }
 
 '.title': {

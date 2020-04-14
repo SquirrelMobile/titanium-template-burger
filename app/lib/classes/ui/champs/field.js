@@ -47,6 +47,7 @@ export class Field {
 			height: Ti.UI.FILL,
 			left: 0,
 			right: 0,
+			touchFeedback: true,
 		});
 		this.container.add(this.fieldView);
 		if (obj.buttonLeft) {

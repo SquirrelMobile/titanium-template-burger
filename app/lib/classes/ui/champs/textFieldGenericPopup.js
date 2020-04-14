@@ -7,7 +7,10 @@ class TextFieldPopup extends FakeTextField {
 		var _this = this;
 		this.container.addEventListener("click", function() {
 			var dialog = new Dialog({
-				title: obj.dialog.title || "",
+				title: obj.dialog.title,
+				content: Alloy.createController(obj.dialog.content).getView(),
+				modal: obj.dialog.modal,
+				modalStyle: obj.dialog.modalStyle,
 			});
 			dialog.open();
 		});
