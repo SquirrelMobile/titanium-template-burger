@@ -25,11 +25,20 @@ class TextField extends Field {
 
 		var that = this;
 		var containerBorderColor = this.container.borderColor;
+		var bottomViewColor = this.bottomView.backgroundColor;
 		this.textField.addEventListener("focus", function() {
-			that.container.borderColor = Alloy.Globals.form.activeColor;
+			if (that.bottomView.visible == false) {
+				that.container.borderColor = Alloy.Globals.form.activeColor;
+			} else {
+				that.bottomView.backgroundColor = Alloy.Globals.form.activeColor;
+			}
 		});
 		this.textField.addEventListener("blur", function() {
-			that.container.borderColor = containerBorderColor;
+			if (that.bottomView.visible == false) {
+				that.container.borderColor = containerBorderColor;
+			} else {
+				that.bottomView.backgroundColor = bottomViewColor;
+			}
 		});
 	}
 

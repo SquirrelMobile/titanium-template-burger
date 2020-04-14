@@ -3,9 +3,9 @@ import { Button } from "classes/ui/button";
 export class Field {
 	constructor(obj) {
 		this.errors = {
-			EMAIL_NOT_VALIDATED: { id: 1, text: "- Format email non valide" },
-			PHONE_NOT_VALIDATED: { id: 2, text: "- Format téléphone non valide" },
-			PASSWORD_NOT_LENGTH: { id: 3, text: "- Mot de passe trop court" },
+			EMAIL_NOT_VALIDATED: { id: 1, text: "- " + L("error.email_not_validated") },
+			PHONE_NOT_VALIDATED: { id: 2, text: "- " + L("error.phone_not_validated") },
+			PASSWORD_NOT_LENGTH: { id: 3, text: "- " + L("error.password_not_validated") },
 		};
 		this.required = obj.required;
 		this.parent = Ti.UI.createView({
@@ -60,13 +60,13 @@ export class Field {
 		this.parent.add(this.container);
 
 		if (Alloy.Globals.form.bottomView) {
-			var bottom = Ti.UI.createView(
+			this.bottomView = Ti.UI.createView(
 				_.extend(Alloy.Globals.form.bottomView, {
 					bottom: 0,
 					zIndex: 99,
 				}),
 			);
-			this.parent.add(bottom);
+			this.parent.add(this.bottomView);
 		}
 	}
 
