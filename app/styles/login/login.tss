@@ -171,8 +171,16 @@
       type : "label",
     },
     {
+      id: "test44",
+      activeColor : Alloy.CFG.COLORS.main,
+      disabledColor: "white",
+      title : {
+        text : "textfsqdfqsdfqsield",
+      },
       data : [
        {
+         active : true,
+         id : 1,
          label : {
            text : "test"
          },
@@ -180,6 +188,7 @@
            text : "\uf00d"
          }
        },{
+         id : 2,
          label : {
            text : "test"
          },

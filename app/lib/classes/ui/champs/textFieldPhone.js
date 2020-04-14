@@ -4,16 +4,14 @@ class TextFieldPhone extends TextField {
 	constructor(obj) {
 		super(obj);
 		var widthPrefix = 70;
+		this.hasPrefix = obj.hasPrefix !== false ? true : false;
 		this.PhoneNumber = require("awesome-phonenumber");
 		this.prefix = Ti.UI.createLabel({
 			text: "---",
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			width: widthPrefix,
+			width: this.hasPrefix === true ? widthPrefix : Ti.UI.FILL,
 			left: 0,
 		});
-		if (obj.prefix) {
-			this.prefix.applyProperties(obj.prefix);
-		}
 
 		this.createButton(
 			{
@@ -24,28 +22,49 @@ class TextFieldPhone extends TextField {
 
 		this.textField.applyProperties({
 			keyboardType: Ti.UI.KEYBOARD_TYPE_PHONE_PAD,
-			left: widthPrefix,
 			autofillType: Titanium.UI.AUTOFILL_TYPE_PHONE,
 		});
-		this.separator = Ti.UI.createView({
-			height: Ti.UI.FILL,
-			backgroundColor: Alloy.CFG.COLORS.black,
-			left: widthPrefix,
-			width: 1,
-		});
-		var that = this;
-		this.prefix.addEventListener("click", e => {
-			var c = Alloy.createWidget("fr.squirrel.prefixPhone", { bgTitle: Alloy.CFG.COLORS.main });
-			c.on("selectCountry", function(prefix) {
-				that.prefix.data = prefix;
-				that.prefix.text = prefix.emoji + " ";
-				that.prefix.text += prefix.countryCallingCodes[0] ? prefix.countryCallingCodes[0] : "0";
-				that.textField.focus();
+		if (this.hasPrefix == true) {
+			this.textField.applyProperties({
+				left: widthPrefix,
 			});
-			c.getView().open();
-		});
-		this.container.add(this.prefix);
-		this.container.add(this.separator);
+			this.prefix.data = {
+				alpha2: "FR",
+				alpha3: "FRA",
+				countryCallingCodes: ["+33"],
+				currencies: ["EUR"],
+				emoji: "🇫🇷",
+				ioc: "FRA",
+				languages: ["fra"],
+				name: "France",
+				status: "assigned",
+			};
+			this.prefix.text = "🇫🇷";
+			this.prefix.text += "+33";
+
+			if (obj.prefix) {
+				this.prefix.applyProperties(obj.prefix);
+			}
+			var that = this;
+			this.prefix.addEventListener("click", e => {
+				var c = Alloy.createWidget("fr.squirrel.prefixPhone", { bgTitle: Alloy.CFG.COLORS.main });
+				c.on("selectCountry", function(prefix) {
+					that.prefix.data = prefix;
+					that.prefix.text = prefix.emoji + " ";
+					that.prefix.text += prefix.countryCallingCodes[0] ? prefix.countryCallingCodes[0] : "0";
+					that.textField.focus();
+				});
+				c.getView().open();
+			});
+			this.container.add(this.prefix);
+			this.separator = Ti.UI.createView({
+				height: Ti.UI.FILL,
+				backgroundColor: Alloy.CFG.COLORS.black,
+				left: widthPrefix,
+				width: 1,
+			});
+			this.container.add(this.separator);
+		}
 	}
 
 	checkError(obj) {
@@ -59,10 +78,14 @@ class TextFieldPhone extends TextField {
 	}
 
 	checkIfPhoneIsValid() {
-		if (this.prefix && this.prefix.data) {
-			return this.isValid(this.textField.value, this.prefix.data.alpha2);
+		if (this.hasPrefix == true) {
+			if (this.prefix && this.prefix.data) {
+				return this.isValid(this.textField.value, this.prefix.data.alpha2);
+			} else {
+				return false;
+			}
 		} else {
-			return false;
+			return true;
 		}
 	}
 

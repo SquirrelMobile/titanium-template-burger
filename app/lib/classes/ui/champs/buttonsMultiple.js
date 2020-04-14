@@ -8,19 +8,47 @@ class ButtonsMultiple extends Field {
 			height: Ti.UI.SIZE,
 			layout: "horizontal",
 			horizontalWrap: false,
-			width: Ti.UI.SIZE,
+			width: Ti.UI.FILL,
 		});
 		this.buttons = [];
-
+		this.container.height = Ti.UI.SIZE;
+		this.fieldView.height = Ti.UI.SIZE;
 		var that = this;
-		_.each(obj.data, function(d) {
-			let button = new Button(d);
-			button.view.width = obj.data.length / 100 + "%";
+		this.currentActive = null;
+		_.each(obj.data, function(d, i) {
+			d["activeColor"] = obj.activeColor;
+			d["disabledColor"] = obj.disabledColor;
+			var button = new Button(d);
+			button.view.width = (1 / obj.data.length) * 100 + "%";
 			that.buttons.push(button);
+			if (d.active) {
+				that.currentActive = button;
+			}
+			button.view.addEventListener("click", function(e) {
+				if (that.currentActive) {
+					that.currentActive.setActive(false);
+				}
+				that.currentActive = button;
+				button.setActive(true);
+
+				console.log(e);
+			});
+			console.log(button.view.height);
+			console.log(button.view.width);
 			that.view.add(button.view);
 		});
 
 		this.fieldView.add(this.view);
+	}
+
+	focus() {}
+
+	getValue() {
+		return this.currentActive.id;
+	}
+
+	setValue(num) {
+		this.buttons[num].setActive(true);
 	}
 }
 
