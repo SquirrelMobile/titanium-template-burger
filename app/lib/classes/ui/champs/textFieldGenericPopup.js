@@ -4,25 +4,22 @@ import { Dialog } from "classes/ui/genericDialog";
 class TextFieldPopup extends FakeTextField {
 	constructor(obj) {
 		super(obj);
-		var _this = this;
+		var that = this;
+		this.callback = obj.callback || function() {};
 		this.container.addEventListener("click", function() {
 			var dialog = new Dialog({
 				title: obj.dialog.title,
-				content: Alloy.createController(obj.dialog.content).getView(),
+				content: Alloy.createController(obj.dialog.content, {})
+					.on("select", function(ev) {
+						that.callback(ev);
+						dialog.close();
+					})
+					.getView(),
 				modal: obj.dialog.modal,
 				modalStyle: obj.dialog.modalStyle,
 			});
 			dialog.open();
 		});
-	}
-
-	getValue() {
-		return this.faketextField ? this.faketextField.date : null;
-	}
-
-	setValue(val) {
-		let currentDate = Alloy.Globals.moment(val);
-		_this.faketextField.text = currentDate.format("DD MMMM YYYY");
 	}
 }
 

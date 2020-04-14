@@ -1,9 +1,8 @@
-import { TextField } from "classes/ui/champs/textField";
+import { FakeTextField } from "classes/ui/champs/fakeTextField";
 
-class TextFieldList extends TextField {
+class TextFieldList extends FakeTextField {
 	constructor(obj) {
 		super(obj);
-		this.fieldView.remove(this.textField);
 		this.createButton(
 			{
 				title: "\uf0d7",
@@ -11,11 +10,12 @@ class TextFieldList extends TextField {
 			"buttonRight",
 		);
 		if (OS_ANDROID) {
+			this.fieldView.remove(this.faketextField);
 			var data = [];
 			if (obj.list) {
 				this.currentChoice = _.first(obj.list);
 
-				this.textField = Ti.UI.createPicker(
+				this.faketextField = Ti.UI.createPicker(
 					_.extend(Alloy.Globals.form.textField, {
 						text: obj.textField.hintText,
 						height: Ti.UI.FILL,
@@ -38,41 +38,42 @@ class TextFieldList extends TextField {
 					);
 				});
 
-				this.textField.add([column1]);
-				this.fieldView.add(this.textField);
+				this.faketextField.add([column1]);
+				this.fieldView.add(this.faketextField);
 			}
 		} else if (OS_IOS) {
+			this.faketextField.color = obj.color;
 			var first = _.first(obj.list);
 			if (first) {
 				this.currentChoice = first;
 				if (first.text === "") {
-					this.textField.applyProperties(first);
-					(this.textField.color = "gray"), (this.textField.text = "Non renseigné");
-					this.textField.val = first.text;
+					this.faketextField.applyProperties(first);
+					(this.faketextField.color = "gray"), (this.faketextField.text = "Non renseigné");
+					this.faketextField.val = first.text;
 				} else {
 					var key = "picker." + first.text;
-					this.textField.applyProperties(first);
-					this.textField.text = L(key);
-					this.textField.val = first.text;
+					this.faketextField.applyProperties(first);
+					this.setValue(L(key));
+					this.faketextField.val = first.text;
 				}
 			}
-			var _this = this;
-			this.textField.addEventListener("click", function(e) {
+			var that = this;
+			this.container.addEventListener("click", function(e) {
 				if (obj.list) {
-					Alloy.createController("/partials/_pickeriOS", {
+					Alloy.createController("/partials/_picker", {
 						data: obj.list,
 						title: obj.hintText || obj.hintTextTitle,
 					})
 						.on("click", function(val) {
-							_this.textField.fireEvent("change", {
+							that.faketextField.fireEvent("change", {
 								row: {
 									val: val.val,
 									value: val.value,
 								},
 							});
-							_this.textField.value = val.value;
-							_this.textField.val = val.val;
-							_this.textField.text = L("picker." + val.val);
+							that.faketextField.value = val.value;
+							that.faketextField.val = val.val;
+							that.setValue(L("picker." + val.val));
 						})
 						.getView()
 						.open();
@@ -82,16 +83,16 @@ class TextFieldList extends TextField {
 	}
 
 	getValue() {
-		return this.textField.value || null;
+		return this.faketextField.value || null;
 	}
 
 	setValue(val) {
 		if (OS_ANDROID) {
-			this.textField.setSelectedRow(0, _.findIndex(this.list, { text: e }));
+			this.faketextField.setSelectedRow(0, _.findIndex(this.list, { text: val }));
 		}
-		this.textField.text = L("picker." + e);
-		this.textField.value = e;
-		this.textField.val = e;
+		this.faketextField.text = L("picker." + val);
+		this.faketextField.value = val;
+		this.faketextField.val = val;
 	}
 }
 

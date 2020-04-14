@@ -11,6 +11,7 @@ class TextFieldEmail extends TextField {
 		);
 		this.textField.applyProperties({
 			autofillType: Titanium.UI.AUTOFILL_TYPE_EMAIL,
+			autocapitalization: Titanium.UI.TEXT_AUTOCAPITALIZATION_NONE,
 			keyboardType: Titanium.UI.KEYBOARD_TYPE_EMAIL,
 		});
 	}

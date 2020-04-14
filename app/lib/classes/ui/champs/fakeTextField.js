@@ -26,7 +26,8 @@ class FakeTextField extends TextField {
 	}
 
 	setValue(val) {
-		_this.faketextField.text = val;
+		this.faketextField.text = val;
+		this.faketextField.color = "black";
 	}
 }
 

@@ -145,7 +145,7 @@
     {
       id: "map",
       title : {
-        text : "",
+        text : "Map",
       },
       container : {
         height: 100
@@ -153,7 +153,7 @@
       type : "map",
     },
     {
-      id: "test",
+      id: "textFieldGenericPopup",
       title : {
         text : "textfield",
       },
@@ -161,8 +161,10 @@
           hintText : L('yourPassword'),
       },
       dialog : {
-        title : "example",
-        content : "profil/profil"
+        title : {
+          text : "example"
+        },
+        content : "partials/listExample"
       },
       type : "textFieldGenericPopup",
     },

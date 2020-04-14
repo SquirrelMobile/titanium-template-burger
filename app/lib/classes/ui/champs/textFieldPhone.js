@@ -3,7 +3,7 @@ import { TextField } from "classes/ui/champs/textField";
 class TextFieldPhone extends TextField {
 	constructor(obj) {
 		super(obj);
-		var widthPrefix = 70;
+		var widthPrefix = obj.widthPrefix || 70;
 		this.hasPrefix = obj.hasPrefix !== false ? true : false;
 		this.PhoneNumber = require("awesome-phonenumber");
 		this.prefix = Ti.UI.createLabel({
@@ -26,7 +26,7 @@ class TextFieldPhone extends TextField {
 		});
 		if (this.hasPrefix == true) {
 			this.textField.applyProperties({
-				left: widthPrefix,
+				left: widthPrefix + 10,
 			});
 			this.prefix.data = {
 				alpha2: "FR",
