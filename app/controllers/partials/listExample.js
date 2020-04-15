@@ -22,13 +22,20 @@ function populateData(itemIndex) {
 	var items = _.chain(currentData)
 		.map(function(obj, i) {
 			return {
-				properties: _.extend(obj, {
-					accessoryType:
-						itemIndex === i
-							? Titanium.UI.LIST_ACCESSORY_TYPE_CHECKMARK
-							: Titanium.UI.LIST_ACCESSORY_TYPE_NONE,
-					selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
-				}),
+				properties: OS_IOS
+					? _.extend(obj, {
+							accessoryType:
+								itemIndex === i
+									? Titanium.UI.LIST_ACCESSORY_TYPE_CHECKMARK
+									: Titanium.UI.LIST_ACCESSORY_TYPE_NONE,
+							selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
+					  })
+					: _.extend(obj, {
+							accessoryType:
+								itemIndex === i
+									? Titanium.UI.LIST_ACCESSORY_TYPE_CHECKMARK
+									: Titanium.UI.LIST_ACCESSORY_TYPE_NONE,
+					  }),
 				template: "photo",
 				image: {
 					visible: false,

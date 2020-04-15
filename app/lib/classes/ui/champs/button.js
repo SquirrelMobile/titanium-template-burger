@@ -35,15 +35,6 @@ class Button {
 			obj.label,
 		);
 
-		// {
-		// 	height: Ti.UI.SIZE,
-		// 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		// 	touchEnabled: false,
-		// 	color: this.activeColor,
-		// 	text: "test",
-		// 	width: Ti.UI.FILL,
-		// }
-
 		this.createSetView(
 			"icon",
 			"createLabel",

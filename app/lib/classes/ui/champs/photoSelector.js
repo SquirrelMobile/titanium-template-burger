@@ -20,7 +20,7 @@ class PhotoSelector extends Field {
 			obj.image,
 		);
 
-		this.button = new Button((this.defaultParams && this.defaultParams.buttons) || {});
+		this.button = new Button((this.defaultParams && this.defaultParams.button) || {});
 		this.button.label.text = L("choosePicture");
 
 		this.containerPhoto.add(this.image);

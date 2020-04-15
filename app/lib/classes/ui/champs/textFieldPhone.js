@@ -3,15 +3,8 @@ import { TextField } from "classes/ui/champs/textField";
 class TextFieldPhone extends TextField {
 	constructor(obj) {
 		super(obj);
-		var widthPrefix = obj.widthPrefix || 70;
 		this.hasPrefix = obj.hasPrefix !== false ? true : false;
 		this.PhoneNumber = require("awesome-phonenumber");
-		this.prefix = Ti.UI.createLabel({
-			text: "---",
-			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			width: this.hasPrefix === true ? widthPrefix : Ti.UI.FILL,
-			left: 0,
-		});
 
 		this.createButton(
 			{
@@ -25,8 +18,22 @@ class TextFieldPhone extends TextField {
 			autofillType: Titanium.UI.AUTOFILL_TYPE_PHONE,
 		});
 		if (this.hasPrefix == true) {
+			this.createAndSetView(
+				"prefix",
+				"createLabel",
+				{
+					text: "---",
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					minimumFontSize: 7,
+					touchFeedback: true,
+					width: 70,
+					left: 0,
+				},
+				obj.prefix,
+			);
+
 			this.textField.applyProperties({
-				left: widthPrefix + 10,
+				left: this.prefix.width + 10,
 			});
 			this.prefix.data = {
 				alpha2: "FR",
@@ -42,9 +49,6 @@ class TextFieldPhone extends TextField {
 			this.prefix.text = "🇫🇷";
 			this.prefix.text += "+33";
 
-			if (obj.prefix) {
-				this.prefix.applyProperties(obj.prefix);
-			}
 			var that = this;
 			this.prefix.addEventListener("click", e => {
 				var c = Alloy.createWidget("fr.squirrel.prefixPhone", { bgTitle: Alloy.CFG.COLORS.main });
@@ -60,7 +64,7 @@ class TextFieldPhone extends TextField {
 			this.separator = Ti.UI.createView({
 				height: Ti.UI.FILL,
 				backgroundColor: Alloy.CFG.COLORS.black,
-				left: widthPrefix,
+				left: this.prefix.width,
 				width: 1,
 			});
 			this.container.add(this.separator);

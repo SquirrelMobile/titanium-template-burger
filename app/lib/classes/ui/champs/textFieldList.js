@@ -24,6 +24,8 @@ class TextFieldList extends FakeTextField {
 
 				var column1 = Ti.UI.createPickerColumn({ width: Ti.UI.FILL });
 				this.list = obj.list;
+				this.faketextField.value = this.list[0];
+				this.faketextField.val = this.list[0];
 				_.map(obj.list, function(ev) {
 					var title = "picker." + ev.text;
 					var titleComplete = L(title);
@@ -37,7 +39,11 @@ class TextFieldList extends FakeTextField {
 						),
 					);
 				});
-
+				var that = this;
+				this.faketextField.addEventListener("change", function(e) {
+					that.faketextField.value = that.list[e.rowIndex];
+					that.faketextField.val = that.list[e.rowIndex];
+				});
 				this.faketextField.add([column1]);
 				this.fieldView.add(this.faketextField);
 			}

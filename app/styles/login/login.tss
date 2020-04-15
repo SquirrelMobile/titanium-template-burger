@@ -46,9 +46,6 @@
 '#form': {
   champs : [
     {
-      title : {
-        text : "Ma photo",
-      },
       container : {
         backgroundColor: "transparent",
         borderColor: "transparent"
@@ -62,7 +59,7 @@
       button : {
         text: L("choosePicture")
       },
-      type : "PhotoSelector",
+      type : "photoSelector",
     },
     {
       id: "email",

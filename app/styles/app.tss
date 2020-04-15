@@ -10,15 +10,14 @@
 		activeColor: "blue",
 		parent: {
 			top: 10,
-			borderColor: 'red',
 			height: Ti.UI.SIZE,
 			layout: "vertical",
 			width: Ti.UI.FILL,
 		},
 		container: {
 			height: 50,
-			borderColor: "red",
 			backgroundColor: "white",
+			borderColor: Alloy.CFG.COLORS.main2,
 			borderRadius: 5,
 			touchFeedback: true,
 			width: Ti.UI.FILL,
@@ -42,9 +41,9 @@
 			visible: false,
 		},
 		title: {
-			bottom: 10,
+			bottom: 5,
 			left: 3,
-			color: Alloy.CFG.COLORS.black,
+			color: "white",
 		},
 		textField: {
 			left: 10,
@@ -64,10 +63,11 @@
 			top: 20,
 			backgroundColor: Alloy.CFG.COLORS.main2,
 			width: 185,
+		  borderRadius: 5,
 			bottom: 10,
 		},
 		label: {
-			color: "white",
+			color: "black",
 			height: 40,
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		}

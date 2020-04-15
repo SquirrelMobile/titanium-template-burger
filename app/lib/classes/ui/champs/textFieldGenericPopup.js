@@ -15,6 +15,7 @@ class TextFieldPopup extends FakeTextField {
 				})
 					.on("select", function(ev) {
 						that.currentValue = ev;
+						that.faketextField.value = ev;
 						that.callback(ev);
 						dialog.close();
 					})

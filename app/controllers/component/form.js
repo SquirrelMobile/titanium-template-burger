@@ -4,25 +4,12 @@ var champs = [];
 _.each(args.champs, function(e, i) {
 	addField(_.extend(e, { default: args.default }), i);
 	if (e && e.type === "label") {
-		var champ = Ti.UI.createLabel({
-			top: 10,
-			left: 0,
-			color: Alloy.CFG.COLORS.black,
-			height: Ti.UI.SIZE,
-		});
+		let champ = Ti.UI.createLabel(args.default && args.default.label);
 		champ.applyProperties(e);
 		$.container.add(champ);
 	} else if (e.type === "valid") {
-		var champ = require("/classes/ui/button").createButtonWithIcon(
-			_.extend(
-				{
-					top: Alloy.Globals.smallScreen ? 10 : 18,
-					backgroundColor: Alloy.CFG.COLORS.main2,
-					color: "white",
-					width: 185,
-				},
-				e,
-			),
+		let champ = require("/classes/ui/button").createButtonWithIcon(
+			_.extend(args.default && args.default.button, e),
 		);
 		champ.addEventListener("click", handleValid);
 		$.container.add(champ);
@@ -118,7 +105,7 @@ function addField(e, i) {
 				"textFieldPhone",
 				"textFieldNumber",
 				"textFieldOptionDialog",
-				"PhotoSelector",
+				"photoSelector",
 				"textField",
 				"checkbox",
 				"buttonsMultiple",

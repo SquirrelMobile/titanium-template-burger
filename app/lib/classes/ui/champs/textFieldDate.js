@@ -38,7 +38,7 @@ class TextFieldDate extends FakeTextField {
 	}
 
 	getValue() {
-		return this.faketextField ? this.faketextField.date.format() : null;
+		return this.faketextField && this.faketextField.date ? this.faketextField.date.format() : null;
 	}
 
 	setValue(val) {
