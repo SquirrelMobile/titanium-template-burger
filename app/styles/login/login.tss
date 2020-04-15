@@ -57,7 +57,9 @@
         backgroundColor: "white",
       },
       button : {
-        text: L("choosePicture")
+        label : {
+          text: L("choosePicture")
+        }
       },
       type : "photoSelector",
     },
@@ -67,7 +69,7 @@
         text : "Email",
       },
       textField : {
-        hintText : "Entrez votre email",
+        hintText : "type your email",
       },
       type : "textFieldEmail",
       required : true,
@@ -75,24 +77,22 @@
     {
       id: "phone",
       title : {
-        text : "Email",
+        text : "Phone",
       },
       textField : {
-        hintText : "Entre ton email",
+        hintText : "type your number phone",
       },
       type : "textFieldPhone",
-      required : true,
     },
     {
-      id: "date",
+      id: "birthday",
       title : {
-        text : "date",
+        text : "Birthday",
       },
       textField : {
-        hintText : "entre ton date",
+        hintText : "type your birthday",
       },
-      type : "textFieldDate",
-      required : true,
+      type : "textFieldDate"
     },
     {
       id: "textfield",
@@ -111,13 +111,12 @@
     {
       id: "password",
       title : {
-        text : "Mot de passe",
+        text : "Password",
       },
       textField : {
-        hintText : L('yourPassword'),
+          hintText : "Type your password",
       },
-      required : true,
-      type : "textFieldPassword"
+      type : "textFieldPassword",
     },
     {
       id: "test2",
@@ -136,12 +135,12 @@
     },
 
     {
-      id: "test",
+      id: "comment",
       title : {
-        text : "textfield",
+        text : "Comment",
       },
       textArea : {
-          hintText : L('yourPassword'),
+          hintText : "type your comment",
       },
       type : "textArea",
     },
@@ -151,7 +150,10 @@
         text : "Map",
       },
       container : {
-        height: 100
+        height : 100
+      },
+      label : {
+        text : "select"
       },
       type : "map",
     },
@@ -177,10 +179,10 @@
     },
     {
       id: "test44",
-      activeColor : Alloy.CFG.COLORS.main,
+      activeColor : "black",
       disabledColor: "white",
       title : {
-        text : "textfsqdfqsdfqsield",
+        text : "example",
       },
       data : [
        {
@@ -215,7 +217,7 @@
     {
       id: "checkqsdfqsd",
       label :{
-        text: "Salut"
+        text: "Accept"
       },
       type : "checkbox",
     },

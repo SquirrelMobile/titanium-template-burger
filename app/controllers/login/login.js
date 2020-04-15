@@ -17,9 +17,9 @@ var champs = $.form.getChamps();
 			activity.finish();
 		});
 	}
-	champs.textFieldGenericPopup.callback = function(e) {
-		champs.textFieldGenericPopup.setValue(e.title);
-	};
+	// champs.textFieldGenericPopup.callback = function(e) {
+	// 	champs.textFieldGenericPopup.setValue(e.title);
+	// };
 	// champs.email.setValue("didier@squirrel.fr");
 	// console.log("test", champs.password.getValue());
 

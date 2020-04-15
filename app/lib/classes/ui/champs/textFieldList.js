@@ -61,7 +61,7 @@ class TextFieldList extends FakeTextField {
 					(this.faketextField.color = "gray"), (this.faketextField.text = "Non renseigné");
 					this.faketextField.val = first.text;
 				} else {
-					var key = "picker." + first.text;
+					var key = first.text;
 					this.faketextField.applyProperties(first);
 					this.setValue(L(key));
 					this.faketextField.val = first.text;

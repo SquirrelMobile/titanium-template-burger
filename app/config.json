@@ -16,7 +16,7 @@
 			"black": "#222222",
 			"gray": "#dbdfe2",
 			"text": "#9896a4",
-			"hintText": "#9896a4"
+			"hintText": "#555555"
 		},
 		"pushwoosh": {
 			"projectId": "XXXX-XXXX",
