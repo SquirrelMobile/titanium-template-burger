@@ -66,7 +66,7 @@ class CheckBox extends Field {
 
 exports.CheckBox = CheckBox;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let checkBox = new CheckBox(e);
 	checkBox.parent.super = () => {
 		return checkBox;

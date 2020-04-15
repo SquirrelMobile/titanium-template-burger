@@ -100,7 +100,7 @@ class Map extends Field {
 
 exports.Map = Map;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new Map(e);
 	textfield.parent.super = () => {
 		return textfield;

@@ -49,7 +49,7 @@ class TextFieldDate extends FakeTextField {
 
 exports.TextFieldDate = TextFieldDate;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldDate(e);
 	textfield.parent.super = () => {
 		return textfield;

@@ -29,7 +29,7 @@ class TextFieldEmail extends TextField {
 
 exports.TextFieldEmail = TextFieldEmail;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldEmail(e);
 	textfield.parent.super = () => {
 		return textfield;

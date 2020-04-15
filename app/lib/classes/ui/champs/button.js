@@ -78,7 +78,7 @@ class Button {
 
 exports.Button = Button;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new Button(e);
 	textfield.parent.super = () => {
 		return textfield;

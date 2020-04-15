@@ -104,7 +104,7 @@ class TextFieldList extends FakeTextField {
 
 exports.TextFieldList = TextFieldList;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldList(e);
 	textfield.parent.super = () => {
 		return textfield;

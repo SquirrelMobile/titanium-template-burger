@@ -54,11 +54,11 @@ class TextArea extends Field {
 
 exports.TextArea = TextArea;
 
-exports.createTextField = e => {
-	let textfield = new TextArea(e);
-	textfield.parent.super = () => {
-		return textfield;
+exports.createView = e => {
+	let textArea = new TextArea(e);
+	textArea.parent.super = () => {
+		return textArea;
 	};
 
-	return textfield.parent;
+	return textArea.parent;
 };

@@ -26,7 +26,7 @@ class TextFieldPassword extends TextField {
 
 exports.TextFieldPassword = TextFieldPassword;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldPassword(e);
 	textfield.parent.super = () => {
 		return textfield;

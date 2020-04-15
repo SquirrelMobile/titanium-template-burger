@@ -47,11 +47,11 @@ class PhotoSelector extends Field {
 
 exports.PhotoSelector = PhotoSelector;
 
-exports.createTextField = e => {
-	let textfield = new PhotoSelector(e);
-	textfield.parent.super = () => {
-		return textfield;
+exports.createView = e => {
+	let photoSelector = new PhotoSelector(e);
+	photoSelector.parent.super = () => {
+		return photoSelector;
 	};
 
-	return textfield.parent;
+	return photoSelector.parent;
 };

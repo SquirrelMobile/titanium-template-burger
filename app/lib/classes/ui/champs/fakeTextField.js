@@ -34,7 +34,7 @@ class FakeTextField extends TextField {
 
 exports.FakeTextField = FakeTextField;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new FakeTextField(e);
 	textfield.parent.super = () => {
 		return textfield;

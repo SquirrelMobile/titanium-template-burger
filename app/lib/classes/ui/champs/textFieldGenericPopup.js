@@ -30,7 +30,7 @@ class TextFieldPopup extends FakeTextField {
 
 exports.TextFieldPopup = TextFieldPopup;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldPopup(e);
 	textfield.parent.super = () => {
 		return textfield;

@@ -115,7 +115,7 @@ function addField(e, i) {
 		) > -1
 	) {
 		console.log(e.type);
-		var champ = require("/classes/ui/champs/" + e.type).createTextField(
+		var champ = require("/classes/ui/champs/" + e.type).createView(
 			_.extend(
 				{
 					next: args.champs[i + 1] ? args.champs[i + 1] : null,

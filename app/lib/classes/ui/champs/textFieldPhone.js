@@ -100,7 +100,7 @@ class TextFieldPhone extends TextField {
 
 exports.TextFieldPhone = TextFieldPhone;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldPhone(e);
 	textfield.parent.super = () => {
 		return textfield;

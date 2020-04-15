@@ -64,7 +64,7 @@ class TextField extends Field {
 
 exports.TextField = TextField;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextField(e);
 	textfield.parent.super = () => {
 		return textfield;

@@ -41,7 +41,7 @@ class TextFieldOptionDialog extends FakeTextField {
 
 exports.TextFieldOptionDialog = TextFieldOptionDialog;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new TextFieldOptionDialog(e);
 	textfield.parent.super = () => {
 		return textfield;

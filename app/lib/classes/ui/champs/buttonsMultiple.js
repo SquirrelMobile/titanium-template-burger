@@ -50,7 +50,7 @@ class ButtonsMultiple extends Field {
 
 exports.ButtonsMultiple = ButtonsMultiple;
 
-exports.createTextField = e => {
+exports.createView = e => {
 	let textfield = new ButtonsMultiple(e);
 	textfield.parent.super = () => {
 		return textfield;
