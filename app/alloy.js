@@ -71,11 +71,11 @@ Alloy.Globals.form = {
 	},
 	container: {
 		height: 50,
-		borderColor: "black",
+		borderColor: "red",
 		backgroundColor: "white",
 	},
 	buttonIcons: {
-		font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 16 },
+		font: { fontFamily: Alloy.CFG.FONTS.falight, fontSize: 16 },
 		color: Alloy.CFG.COLORS.black,
 	},
 	bottomView: {

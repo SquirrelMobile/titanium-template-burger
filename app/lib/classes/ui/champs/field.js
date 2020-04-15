@@ -7,48 +7,44 @@ export class Field {
 			PHONE_NOT_VALIDATED: { id: 2, text: "- " + L("error.phone_not_validated") },
 			PASSWORD_NOT_LENGTH: { id: 3, text: "- " + L("error.password_not_validated") },
 		};
-		this.required = obj.required;
-		this.parent = Ti.UI.createView({
-			height: Ti.UI.SIZE,
-			layout: "vertical",
-			width: Ti.UI.FILL,
-		});
-		this.parent.applyProperties(Alloy.Globals.form.parent);
 		this.id = obj.id;
-		this.activeColor = obj.activeColor;
+		this.activeColor = obj.default && obj.default.activeColor;
+		this.required = obj.required;
+		this.defaultParams = obj.default;
+		let defaultParams = obj.default;
+		this.createAndSetView(
+			"parent",
+			"createView",
+			defaultParams && defaultParams.parent,
+			obj.parent,
+		);
+
 		if (obj.title) {
 			if (obj.title.text && obj.required) {
-				if (obj.required) {
-					obj.title.text = obj.title.text + " *";
-				}
+				obj.title.text = obj.title.text + " *";
 			}
-			this.title = Ti.UI.createLabel(_.extend({ height: Ti.UI.SIZE }, Alloy.Globals.form.title));
-			this.title.applyProperties(obj.title);
+			this.createAndSetView(
+				"title",
+				"createLabel",
+				defaultParams && defaultParams.title,
+				obj.title,
+			);
 			this.parent.add(this.title);
 		}
 
-		this.container = Ti.UI.createView(
-			_.extend(
-				{
-					height: 40,
-					backgroundColor: "white",
-					borderColor: Alloy.CFG.COLORS.black,
-					borderRadius: 5,
-					touchFeedback: true,
-					width: Ti.UI.FILL,
-				},
-				Alloy.Globals.form.container,
-			),
+		this.createAndSetView(
+			"container",
+			"createView",
+			defaultParams && defaultParams.container,
+			obj.container,
 		);
-		if (obj.container) {
-			this.container.applyProperties(obj.container);
-		}
-		this.fieldView = Ti.UI.createView({
-			height: Ti.UI.FILL,
-			left: 0,
-			right: 0,
-			touchFeedback: true,
-		});
+		this.createAndSetView(
+			"fieldView",
+			"createView",
+			defaultParams && defaultParams.fieldView,
+			obj.fieldView,
+		);
+
 		this.container.add(this.fieldView);
 		if (obj.buttonLeft) {
 			this.createButton(obj.buttonLeft, "buttonLeft");
@@ -59,13 +55,17 @@ export class Field {
 
 		this.parent.add(this.container);
 
-		if (Alloy.Globals.form.bottomView) {
-			this.bottomView = Ti.UI.createView(
-				_.extend(Alloy.Globals.form.bottomView, {
+		if (defaultParams && defaultParams.bottomView) {
+			this.createAndSetView(
+				"bottomView",
+				"createView",
+				defaultParams && defaultParams.bottomView,
+				_.extend(obj.bottomView, {
 					bottom: 0,
 					zIndex: 99,
 				}),
 			);
+
 			this.parent.add(this.bottomView);
 		}
 	}
@@ -73,36 +73,32 @@ export class Field {
 	createButton(obj, key) {
 		if (obj) {
 			if (key === "buttonLeft") {
-				this[key] = Ti.UI.createButton({
-					width: 40,
-					height: Ti.UI.FILL,
-					left: 0,
-					font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 16 },
-					color: "black",
-					backgroundColor: null,
-				});
-				this[key].applyProperties(Alloy.Globals.form.buttonIcons);
+				this[key] = Ti.UI.createButton(
+					(this.defaultParams && this.defaultParams.buttonIcons) || {},
+				);
+				this[key].left = 0;
 				this[key].applyProperties(obj);
-				this.fieldView.left = 40;
+				this.fieldView.left = this[key].width;
 				this.container.add(this[key]);
 			} else {
 				this[key] = Ti.UI.createButton(
-					_.extend(
-						{
-							width: 40,
-							font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 16 },
-							color: "black",
-							backgroundColor: null,
-							height: Ti.UI.FILL,
-							right: 0,
-						},
-						Alloy.Globals.form.buttonIcons,
-					),
+					(this.defaultParams && this.defaultParams.buttonIcons) || {},
 				);
+				this[key].right = 0;
 				this[key].applyProperties(obj);
-				this.fieldView.right = 40;
+				this.fieldView.right = this[key].width;
 				this.container.add(this[key]);
 			}
+		}
+	}
+
+	createAndSetView(id, method, defaultParam, value) {
+		this[id] = Ti.UI[method]({});
+		if (defaultParam) {
+			this[id].applyProperties(defaultParam);
+		}
+		if (value) {
+			this[id].applyProperties(value);
 		}
 	}
 }

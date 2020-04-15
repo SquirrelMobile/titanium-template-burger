@@ -1,3 +1,4 @@
+var args = $.args;
 var currentData = [
 	{
 		title: "title1",
@@ -15,13 +16,24 @@ var currentData = [
 		title: "title5",
 	},
 ];
-populateData();
-function populateData() {
+var data = args.data;
+populateData(data && data.itemIndex);
+function populateData(itemIndex) {
 	var items = _.chain(currentData)
-		.map(function(obj) {
+		.map(function(obj, i) {
 			return {
-				properties: obj,
+				properties: _.extend(obj, {
+					accessoryType:
+						itemIndex === i
+							? Titanium.UI.LIST_ACCESSORY_TYPE_CHECKMARK
+							: Titanium.UI.LIST_ACCESSORY_TYPE_NONE,
+					selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE,
+				}),
 				template: "photo",
+				image: {
+					visible: false,
+					width: 0,
+				},
 				title: {
 					text: obj.title,
 				},

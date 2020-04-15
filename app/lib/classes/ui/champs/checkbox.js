@@ -3,13 +3,21 @@ import { Field } from "classes/ui/champs/field";
 class CheckBox extends Field {
 	constructor(obj) {
 		super(obj);
-		this.container.height = 0;
-		this.containerCheckBox = Ti.UI.createView({
-			height: Ti.UI.SIZE,
-			layout: "horizontal",
-			horizontalWrap: false,
-			width: Ti.UI.FILL,
-		});
+		this.createAndSetView(
+			"containerCheckBox",
+			"createView",
+			{
+				height: Ti.UI.SIZE,
+				layout: "horizontal",
+				horizontalWrap: false,
+				width: Ti.UI.FILL,
+			},
+			obj.containerCheckBox,
+		);
+		this.container.backgroundColor = this.container.borderColor = "transparent";
+		if (this.bottomView) {
+			this.container.backgroundColor = "transparent";
+		}
 		this.checkBox = require("ti.animation").createAnimationView({
 			height: 45,
 			width: 45,
@@ -24,16 +32,16 @@ class CheckBox extends Field {
 			this.checkBox.applyProperties(obj.checkBox);
 		}
 		this.value = false;
-		this.label = Ti.UI.createLabel(obj.lblView);
+		this.createAndSetView("label", "createLabel", null, obj.label);
 		this.checkBox.setFrame(1);
-		var _this = this;
+		var that = this;
 		this.checkBox.addEventListener("click", function() {
-			_this.value = !_this.value;
-			_this.setValue(_this.value);
+			that.value = !that.value;
+			that.setValue(that.value);
 		});
 		this.containerCheckBox.add(this.checkBox);
 		this.containerCheckBox.add(this.label);
-		this.parent.add(this.containerCheckBox);
+		this.container.add(this.containerCheckBox);
 		this.checkBox.start(0, 30);
 	}
 
@@ -58,16 +66,8 @@ class CheckBox extends Field {
 
 exports.CheckBox = CheckBox;
 
-exports.createCheckbox = e => {
-	let checkBox = new CheckBox({
-		lblView: {
-			html: e.required ? e.text + " *" : e.text,
-			text: e.required ? e.text + " *" : e.text,
-			width: Ti.UI.FILL,
-			font: { fontFamily: Alloy.CFG.FONTS.regular, fontSize: 13 },
-			color: "#0A0C2A",
-		},
-	});
+exports.createTextField = e => {
+	let checkBox = new CheckBox(e);
 	checkBox.parent.super = () => {
 		return checkBox;
 	};

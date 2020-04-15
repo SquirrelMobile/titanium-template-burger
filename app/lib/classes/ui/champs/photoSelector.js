@@ -13,36 +13,19 @@ class PhotoSelector extends Field {
 			height: Ti.UI.SIZE,
 		});
 
-		this.image = Ti.UI.createImageView({
-			height: 200,
-			width: 200,
-			borderRadius: 100,
-		});
-		if (obj.image) {
-			this.image.applyProperties(obj.image);
-		}
+		this.createAndSetView(
+			"image",
+			"createImageView",
+			this.defaultParams && this.defaultParams.photo,
+			obj.image,
+		);
+
+		this.button = new Button((this.defaultParams && this.defaultParams.buttons) || {});
+		this.button.label.text = L("choosePicture");
 
 		this.containerPhoto.add(this.image);
-
-		this.button = new Button({
-			button: {
-				top: 20,
-				backgroundColor: Alloy.CFG.COLORS.main2,
-				width: 185,
-				bottom: 10,
-			},
-			label: {
-				text: L("choosePicture"),
-				color: "white",
-			},
-		});
-		if (obj.button) {
-			this.button.applyProperties(obj.image);
-		}
 		this.containerPhoto.add(this.button.parent);
-
 		this.fieldView.add(this.containerPhoto);
-		// this.button = new Button(obj.button);
 		var that = this;
 		this.button.parent.addEventListener("click", e => {
 			require("/media").openDialogCamera(function(photo, ext) {

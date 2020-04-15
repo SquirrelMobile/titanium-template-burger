@@ -4,13 +4,17 @@ import { Dialog } from "classes/ui/genericDialog";
 class TextFieldPopup extends FakeTextField {
 	constructor(obj) {
 		super(obj);
-		var that = this;
+		let that = this;
 		this.callback = obj.callback || function() {};
+		this.currentValue = null;
 		this.container.addEventListener("click", function() {
-			var dialog = new Dialog({
+			let dialog = new Dialog({
 				title: obj.dialog.title,
-				content: Alloy.createController(obj.dialog.content, {})
+				content: Alloy.createController(obj.dialog.content, {
+					data: that.currentValue,
+				})
 					.on("select", function(ev) {
+						that.currentValue = ev;
 						that.callback(ev);
 						dialog.close();
 					})

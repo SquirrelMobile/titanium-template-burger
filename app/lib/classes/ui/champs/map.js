@@ -17,19 +17,22 @@ class Map extends Field {
 			backgroundColor: "black",
 			opacity: 0.2,
 		});
-		this.label = Ti.UI.createLabel({
-			text: "SÉLECTIONNER",
-			backgroundColor: "#20000000",
-			height: 40,
-			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			width: 200,
-			touchFeedback: true,
-			borderColor: Alloy.CFG.COLORS.black,
-			borderRadius: 20,
-		});
-		if (obj.label) {
-			this.label.applyProperties(obj.label);
-		}
+		this.createAndSetView(
+			"label",
+			"createLabel",
+			(this.defaultParams && this.defaultParams.labelMap) || {
+				text: L("select.map"),
+				backgroundColor: "#20000000",
+				height: 40,
+				textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+				width: 200,
+				touchFeedback: true,
+				borderColor: Alloy.CFG.COLORS.black,
+				borderRadius: 20,
+			},
+			obj.label,
+		);
+
 		this.value = obj.value;
 		var that = this;
 		this.label.addEventListener("click", function() {

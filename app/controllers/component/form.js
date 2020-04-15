@@ -1,23 +1,9 @@
 var args = $.args;
 import { AlertDialog } from "classes/ui/dialog";
-
 var champs = [];
 _.each(args.champs, function(e, i) {
-	addField(e, i);
-	if (e && e.type === "checkbox") {
-		var champ = require("/classes/ui/champs/checkbox").createCheckbox(
-			_.extend(
-				{
-					top: 10,
-					left: 50,
-					right: 50,
-				},
-				e,
-			),
-		);
-		champs.push(champ.super());
-		$.container.add(champ);
-	} else if (e && e.type === "label") {
+	addField(_.extend(e, { default: args.default }), i);
+	if (e && e.type === "label") {
 		var champ = Ti.UI.createLabel({
 			top: 10,
 			left: 0,
@@ -134,6 +120,7 @@ function addField(e, i) {
 				"textFieldOptionDialog",
 				"PhotoSelector",
 				"textField",
+				"checkbox",
 				"buttonsMultiple",
 				"map",
 			],

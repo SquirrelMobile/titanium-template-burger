@@ -19,7 +19,7 @@ class ButtonsMultiple extends Field {
 			d["activeColor"] = obj.activeColor;
 			d["disabledColor"] = obj.disabledColor;
 			var button = new Button(d);
-			button.view.width = (1 / obj.data.length) * 100 + "%";
+			button.view.width = Math.ceil((1 / obj.data.length) * 100) + "%";
 			that.buttons.push(button);
 			if (d.active) {
 				that.currentActive = button;
@@ -30,11 +30,7 @@ class ButtonsMultiple extends Field {
 				}
 				that.currentActive = button;
 				button.setActive(true);
-
-				console.log(e);
 			});
-			console.log(button.view.height);
-			console.log(button.view.width);
 			that.view.add(button.view);
 		});
 

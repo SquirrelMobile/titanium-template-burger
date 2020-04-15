@@ -3,52 +3,61 @@ class Button {
 		this.activeColor = obj.activeColor || "red";
 		this.disabledColor = obj.disabledColor || "white";
 		this.id = obj.id;
-		this.view = Ti.UI.createView({
-			height: Ti.UI.SIZE,
-			width: Ti.UI.SIZE,
-			touchFeedback: true,
-			backgroundColor: obj.disabledColor,
-		});
-		if (obj.view) {
-			this.view.applyProperties(obj.view);
-		}
+		this.createSetView(
+			"view",
+			"createView",
+			{
+				height: Ti.UI.SIZE,
+				width: Ti.UI.SIZE,
+				touchFeedback: true,
+				backgroundColor: obj.disabledColor,
+			},
+			obj.view,
+		);
+		this.createSetView(
+			"viewPadding",
+			"createView",
+			{
+				height: Ti.UI.SIZE,
+				top: 10,
+				touchEnabled: false,
+				bottom: 10,
+				layout: "vertical",
+				width: Ti.UI.SIZE,
+			},
+			obj.viewPadding,
+		);
 
-		this.viewPadding = Ti.UI.createView({
-			height: Ti.UI.SIZE,
-			top: 10,
-			touchEnabled: false,
-			bottom: 10,
-			layout: "vertical",
-			width: Ti.UI.SIZE,
-		});
-		if (obj.viewPadding) {
-			this.viewPadding.applyProperties(obj.viewPadding);
-		}
+		this.createSetView(
+			"label",
+			"createLabel",
+			obj.defaultParams && obj.defaultParams.label,
+			obj.label,
+		);
 
-		this.label = Ti.UI.createLabel({
-			height: Ti.UI.SIZE,
-			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			touchEnabled: false,
-			color: this.activeColor,
-			text: "test",
-			width: Ti.UI.FILL,
-		});
-		if (obj.label) {
-			this.label.applyProperties(obj.label);
-		}
+		// {
+		// 	height: Ti.UI.SIZE,
+		// 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+		// 	touchEnabled: false,
+		// 	color: this.activeColor,
+		// 	text: "test",
+		// 	width: Ti.UI.FILL,
+		// }
 
-		this.icon = Ti.UI.createLabel({
-			height: Ti.UI.SIZE,
-			touchEnabled: false,
-			color: this.activeColor,
-			top: 10,
-			font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 40 },
-			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			width: Ti.UI.FILL,
-		});
-		if (obj.icon) {
-			this.icon.applyProperties(obj.icon);
-		}
+		this.createSetView(
+			"icon",
+			"createLabel",
+			{
+				height: Ti.UI.SIZE,
+				touchEnabled: false,
+				color: this.activeColor,
+				top: 10,
+				font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 40 },
+				textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+				width: Ti.UI.FILL,
+			},
+			obj.icon,
+		);
 
 		this.setActive(obj.active);
 
@@ -63,6 +72,16 @@ class Button {
 		this.view.opacity = bool ? 1 : 0.8;
 		this.icon.color = !bool ? this.activeColor : this.disabledColor;
 		this.label.color = !bool ? this.activeColor : this.disabledColor;
+	}
+
+	createSetView(id, method, defaultParam, value) {
+		this[id] = Ti.UI[method]({});
+		if (defaultParam) {
+			this[id].applyProperties(defaultParam);
+		}
+		if (value) {
+			this[id].applyProperties(value);
+		}
 	}
 }
 

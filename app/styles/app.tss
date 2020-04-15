@@ -5,6 +5,76 @@
 	font: { fontFamily : Alloy.CFG.FONTS.fa }
 }
 
+".defaultForm" : {
+	default : {
+		activeColor: "blue",
+		parent: {
+			top: 10,
+			borderColor: 'red',
+			height: Ti.UI.SIZE,
+			layout: "vertical",
+			width: Ti.UI.FILL,
+		},
+		container: {
+			height: 50,
+			borderColor: "red",
+			backgroundColor: "white",
+			borderRadius: 5,
+			touchFeedback: true,
+			width: Ti.UI.FILL,
+		},
+		buttonIcons: {
+			font: { fontFamily: "FontAwesome5Pro-Solid", fontSize: 16 },
+			color: Alloy.CFG.COLORS.black,
+			width: 40,
+			height: Ti.UI.FILL,
+			backgroundColor: null,
+		},
+		fieldView : {
+			height: Ti.UI.FILL,
+			left: 0,
+			right: 0,
+			touchFeedback: true,
+		},
+		bottomView: {
+			height: 1,
+			backgroundColor: "black",
+			visible: false,
+		},
+		title: {
+			bottom: 10,
+			left: 3,
+			color: Alloy.CFG.COLORS.black,
+		},
+		textField: {
+			left: 10,
+			right: 10,
+			height: 50,
+			font: { fontFamily: Alloy.CFG.FONTS.regular, fontSize: 15 },
+			hintTextColor: Alloy.CFG.COLORS.hintText,
+			color: Alloy.CFG.COLORS.black,
+			backgroundColor: null,
+		},
+		photo : {
+			height: 200,
+			width: 200,
+			borderRadius: 100,
+		},
+		button: {
+			top: 20,
+			backgroundColor: Alloy.CFG.COLORS.main2,
+			width: 185,
+			bottom: 10,
+		},
+		label: {
+			color: "white",
+			height: 40,
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+		}
+
+	}
+}
+
 ".faduo": {
 	font: { fontFamily : Alloy.CFG.FONTS.faduo }
 }

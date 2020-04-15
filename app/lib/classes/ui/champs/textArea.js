@@ -28,7 +28,7 @@ class TextArea extends Field {
 		var that = this;
 		var containerBorderColor = this.container.borderColor;
 		this.textArea.addEventListener("focus", function() {
-			that.container.borderColor = Alloy.Globals.form.activeColor;
+			that.container.borderColor = that.activeColor;
 		});
 		this.textArea.addEventListener("blur", function() {
 			that.container.borderColor = containerBorderColor;

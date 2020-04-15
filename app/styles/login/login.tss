@@ -59,6 +59,9 @@
   			borderRadius: 100,
         backgroundColor: "white",
       },
+      button : {
+        text: L("choosePicture")
+      },
       type : "PhotoSelector",
     },
     {
@@ -67,7 +70,7 @@
         text : "Email",
       },
       textField : {
-        hintText : "Entre ton email",
+        hintText : "Entrez votre email",
       },
       type : "textFieldEmail",
       required : true,
@@ -105,6 +108,7 @@
       list : [
       {text : "list"},{text : "column"}
       ],
+      required : true,
       type : "textFieldList",
     },
     {
@@ -200,13 +204,23 @@
          icon :{
            text : "\uf00d"
          }
+       },{
+         id : 3,
+         label : {
+           text : "test"
+         },
+         icon :{
+           text : "\uf00d"
+         }
        }
       ],
       type : "buttonsMultiple",
     },
     {
       id: "checkqsdfqsd",
-      text :"Salut",
+      label :{
+        text: "Salut"
+      },
       type : "checkbox",
     },
     {
