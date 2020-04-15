@@ -4,6 +4,13 @@ class TextFieldList extends FakeTextField {
 	constructor(obj) {
 		super(obj);
 
+		this.createButton(
+			{
+				title: "\uf0d7",
+			},
+			"buttonRight",
+		);
+
 		if (OS_ANDROID) {
 			this.fieldView.remove(this.faketextField);
 			var data = [];
@@ -15,8 +22,8 @@ class TextFieldList extends FakeTextField {
 					height: Ti.UI.FILL,
 					width: Ti.UI.FILL,
 				});
-				if (obj.defaultParams && obj.defaultParams.textField) {
-					this.fakeTextField.applyProperties(obj.defaultParams.textField);
+				if (this.defaultParams && this.defaultParams.textField) {
+					this.faketextField.applyProperties(this.defaultParams.textField);
 				}
 
 				var column1 = Ti.UI.createPickerColumn({ width: Ti.UI.FILL });
@@ -45,12 +52,6 @@ class TextFieldList extends FakeTextField {
 				this.fieldView.add(this.faketextField);
 			}
 		} else if (OS_IOS) {
-			this.createButton(
-				{
-					title: "\uf0d7",
-				},
-				"buttonRight",
-			);
 			this.faketextField.color = obj.color;
 			var first = _.first(obj.list);
 			if (first) {

@@ -30,6 +30,7 @@
 			backgroundColor: null,
 		},
 		fieldView : {
+		width: Ti.UI.FILL,
 			height: Ti.UI.FILL,
 			left: 0,
 			right: 0,

@@ -31,7 +31,7 @@ class Button {
 		this.createSetView(
 			"label",
 			"createLabel",
-			obj.defaultParams && obj.defaultParams.label,
+			this.defaultParams && this.defaultParams.label,
 			obj.label,
 		);
 

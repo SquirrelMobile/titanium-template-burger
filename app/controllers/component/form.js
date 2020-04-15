@@ -1,13 +1,17 @@
 var args = $.args;
 import { AlertDialog } from "classes/ui/dialog";
 var champs = [];
+
+//Create fields
 _.each(args.champs, function(e, i) {
 	addField(_.extend(e, { default: args.default }), i);
+	//if label type
 	if (e && e.type === "label") {
 		let champ = Ti.UI.createLabel(args.default && args.default.label);
 		champ.applyProperties(e);
 		$.container.add(champ);
 	} else if (e.type === "valid") {
+		//if valid type
 		let champ = require("/classes/ui/button").createButtonWithIcon(
 			_.extend(args.default && args.default.button, e),
 		);
@@ -16,6 +20,7 @@ _.each(args.champs, function(e, i) {
 	}
 });
 
+//Click event for valid type field
 function handleValid() {
 	var obj = {};
 	_.each(champs, function(e, i) {
@@ -28,6 +33,7 @@ function handleValid() {
 	}
 }
 
+//Check if each required field is filled and check if the format of the fields is ok
 function verif(obj) {
 	var d = [];
 	_.each(obj, function(elem) {
@@ -38,7 +44,7 @@ function verif(obj) {
 	});
 	if (d.length > 0) {
 		var d = new AlertDialog({
-			title: L("warning"), //"Attention",
+			title: L("warning"),
 			message: {
 				top: 10,
 				text: L("dialog.missingsField") + "\n\n" + d.join("\n"),
@@ -68,7 +74,7 @@ function verif(obj) {
 	});
 	if (error.length > 0) {
 		var d = new AlertDialog({
-			title: L("warning"), //"Attention",
+			title: L("warning"),
 			message: {
 				top: 10,
 				text: error.join("\n"),
@@ -91,6 +97,7 @@ function verif(obj) {
 	return true;
 }
 
+//add the different types of fields, and checking if the class exists
 function addField(e, i) {
 	if (
 		_.indexOf(
@@ -129,6 +136,7 @@ function addField(e, i) {
 	}
 }
 
+// retrieve all the fields except the valid type
 function getChamps() {
 	var obj = {};
 	_.each(champs, function(e) {
@@ -138,6 +146,7 @@ function getChamps() {
 }
 $.getChamps = getChamps;
 
+// execute the blur method on all fields
 function blurAll(e) {
 	_.each(champs, function(champ) {
 		if (champ.blur) {
@@ -147,6 +156,7 @@ function blurAll(e) {
 }
 $.blurAll = blurAll;
 
+// Focus on the following field for iOS (Android = default behavior)
 function handleNext(e) {
 	if (OS_IOS) {
 		var id = e.source.next.id;
@@ -157,6 +167,7 @@ function handleNext(e) {
 	}
 }
 
+// Focus on the previous field for iOS
 function handlePrevious(e) {
 	var id = e.source.previous.id;
 	var find = _.findWhere(champs, { id: id });

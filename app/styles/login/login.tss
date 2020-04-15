@@ -110,15 +110,14 @@
     },
     {
       id: "password",
-      type : "textFieldPassword",
-      passwordMask: true,
       title : {
         text : "Mot de passe",
       },
       textField : {
         hintText : L('yourPassword'),
       },
-      required : true
+      required : true,
+      type : "textFieldPassword"
     },
     {
       id: "test2",

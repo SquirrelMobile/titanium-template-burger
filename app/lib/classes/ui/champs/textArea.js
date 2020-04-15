@@ -9,8 +9,8 @@ class TextArea extends Field {
 			hintText: obj.textArea && obj.textArea.hintText ? obj.textArea.hintText : "",
 			previous: obj.previous,
 		});
-		if (obj.defaultParams && obj.defaultParams.textField) {
-			this.textArea.applyProperties(obj.defaultParams.textField);
+		if (this.defaultParams && this.defaultParams.textField) {
+			this.textArea.applyProperties(this.defaultParams.textField);
 		}
 		this.textArea.height = 100;
 		this.container.height = 100;

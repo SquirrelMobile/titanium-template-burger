@@ -2,6 +2,7 @@ import { Button } from "classes/ui/button";
 
 export class Field {
 	constructor(obj) {
+		// list of possible errors in the fields
 		this.errors = {
 			EMAIL_NOT_VALIDATED: { id: 1, text: "- " + L("error.email_not_validated") },
 			PHONE_NOT_VALIDATED: { id: 2, text: "- " + L("error.phone_not_validated") },
@@ -46,6 +47,7 @@ export class Field {
 		);
 
 		this.container.add(this.fieldView);
+
 		if (obj.buttonLeft) {
 			this.createButton(obj.buttonLeft, "buttonLeft");
 		}
@@ -70,6 +72,7 @@ export class Field {
 		}
 	}
 
+	// Create right or left buttons
 	createButton(obj, key) {
 		if (obj) {
 			if (key === "buttonLeft") {
@@ -92,6 +95,7 @@ export class Field {
 		}
 	}
 
+	// Create view and set with default property and current property
 	createAndSetView(id, method, defaultParam, value) {
 		this[id] = Ti.UI[method]({});
 		if (defaultParam) {

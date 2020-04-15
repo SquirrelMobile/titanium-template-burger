@@ -3,7 +3,7 @@ import { TextField } from "classes/ui/champs/textField";
 class TextFieldPassword extends TextField {
 	constructor(obj) {
 		super(obj);
-		this.minLength = obj.minLength || 6;
+		// this.minLength = obj.minLength || 6;
 		this.createButton(
 			{
 				title: "\uf06e",
