@@ -4,13 +4,14 @@ import { Button } from "classes/ui/button";
 class TextArea extends Field {
 	constructor(obj) {
 		super(obj);
-		this.textArea = require("/xp.ui").createTextArea(
-			_.extend(Alloy.Globals.form.textField, {
-				next: obj.next,
-				hintText: obj.textArea && obj.textArea.hintText ? obj.textArea.hintText : "",
-				previous: obj.previous,
-			}),
-		);
+		this.textArea = require("/xp.ui").createTextArea({
+			next: obj.next,
+			hintText: obj.textArea && obj.textArea.hintText ? obj.textArea.hintText : "",
+			previous: obj.previous,
+		});
+		if (obj.defaultParams && obj.defaultParams.textField) {
+			this.textArea.applyProperties(obj.defaultParams.textField);
+		}
 		this.textArea.height = 100;
 		this.container.height = 100;
 		if (obj.textArea) {

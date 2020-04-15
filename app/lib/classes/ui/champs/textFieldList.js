@@ -3,24 +3,21 @@ import { FakeTextField } from "classes/ui/champs/fakeTextField";
 class TextFieldList extends FakeTextField {
 	constructor(obj) {
 		super(obj);
-		this.createButton(
-			{
-				title: "\uf0d7",
-			},
-			"buttonRight",
-		);
+
 		if (OS_ANDROID) {
 			this.fieldView.remove(this.faketextField);
 			var data = [];
 			if (obj.list) {
 				this.currentChoice = _.first(obj.list);
 
-				this.faketextField = Ti.UI.createPicker(
-					_.extend(Alloy.Globals.form.textField, {
-						text: obj.textField.hintText,
-						height: Ti.UI.FILL,
-					}),
-				);
+				this.faketextField = Ti.UI.createPicker({
+					text: obj.textField.hintText,
+					height: Ti.UI.FILL,
+					width: Ti.UI.FILL,
+				});
+				if (obj.defaultParams && obj.defaultParams.textField) {
+					this.fakeTextField.applyProperties(obj.defaultParams.textField);
+				}
 
 				var column1 = Ti.UI.createPickerColumn({ width: Ti.UI.FILL });
 				this.list = obj.list;
@@ -48,6 +45,12 @@ class TextFieldList extends FakeTextField {
 				this.fieldView.add(this.faketextField);
 			}
 		} else if (OS_IOS) {
+			this.createButton(
+				{
+					title: "\uf0d7",
+				},
+				"buttonRight",
+			);
 			this.faketextField.color = obj.color;
 			var first = _.first(obj.list);
 			if (first) {

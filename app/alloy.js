@@ -64,41 +64,6 @@ if (OS_IOS) {
 
 Alloy.Globals.top = OS_IOS ? (Alloy.Globals.Device.isiPhoneX ? 40 : 20) : 0;
 
-Alloy.Globals.form = {
-	activeColor: "blue",
-	parent: {
-		top: 10,
-	},
-	container: {
-		height: 50,
-		borderColor: "red",
-		backgroundColor: "white",
-	},
-	buttonIcons: {
-		font: { fontFamily: Alloy.CFG.FONTS.falight, fontSize: 16 },
-		color: Alloy.CFG.COLORS.black,
-	},
-	bottomView: {
-		height: 1,
-		backgroundColor: "black",
-		visible: false,
-	},
-	title: {
-		bottom: 10,
-		left: 3,
-		color: Alloy.CFG.COLORS.black,
-	},
-	textField: {
-		left: 10,
-		right: 10,
-		height: 50,
-		font: { fontFamily: Alloy.CFG.FONTS.regular, fontSize: 15 },
-		hintTextColor: Alloy.CFG.COLORS.hintText,
-		color: Alloy.CFG.COLORS.black,
-		backgroundColor: null,
-	},
-};
-
 // fieldView: {
 // 	height: Ti.UI.SIZE,
 // 	left: 0,
