@@ -8,8 +8,19 @@ class PhotoSelector extends Field {
 		this.container.height = Ti.UI.SIZE;
 		this.fieldView.height = Ti.UI.SIZE;
 
-		this.containerPhoto = Ti.UI.createView({
-			layout: "vertical",
+		// this.containerPhoto = Ti.UI.createView({
+		// 	layout: "vertical",
+		// 	height: Ti.UI.SIZE,
+		// });
+
+		this.createAndSetView(
+			"containerPhoto",
+			"createView",
+			this.defaultParams && this.defaultParams.containerPhoto,
+			obj.containerPhoto,
+		);
+
+		this.containerPhoto.applyProperties({
 			height: Ti.UI.SIZE,
 		});
 

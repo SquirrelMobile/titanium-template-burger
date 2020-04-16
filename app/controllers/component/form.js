@@ -4,7 +4,11 @@ var champs = [];
 
 //Create fields
 _.each(args.champs, function(e, i) {
-	addField(_.extend(e, { default: args.default }), i);
+	var nbGroupId = _.filter(args.champs, function(filter) {
+		return filter.groupId === e.groupId && filter.groupId;
+	});
+
+	addField(_.extend(e, { default: args.default }), i, nbGroupId.length);
 	//if label type
 	if (e && e.type === "label") {
 		let champ = Ti.UI.createLabel(args.default && args.default.label);
@@ -98,7 +102,7 @@ function verif(obj) {
 }
 
 //add the different types of fields, and checking if the class exists
-function addField(e, i) {
+function addField(e, i, size) {
 	if (
 		_.indexOf(
 			[
@@ -121,7 +125,6 @@ function addField(e, i) {
 			e.type,
 		) > -1
 	) {
-		console.log(e.type);
 		var champ = require("/classes/ui/champs/" + e.type).createView(
 			_.extend(
 				{
@@ -132,7 +135,32 @@ function addField(e, i) {
 			),
 		);
 		champs.push(champ.super());
-		$.container.add(champ);
+		if (e.groupId) {
+			var id = "groupId" + e.groupId;
+			var find = $.container.getViewById(id);
+			var create = false;
+			if (!find) {
+				create = true;
+				find = Ti.UI.createView({
+					id: id,
+					height: Ti.UI.SIZE,
+					width: Ti.UI.FILL,
+					layout: "horizontal",
+					horizontalWrap: false,
+				});
+			}
+
+			champ.super().parent.applyProperties({
+				width: (1 / size) * 100 + "%",
+				height: Ti.UI.SIZE,
+			});
+			find.add(champ);
+			if (create) {
+				$.container.add(find);
+			}
+		} else {
+			$.container.add(champ);
+		}
 	}
 }
 
