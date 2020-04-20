@@ -578,7 +578,17 @@ get a component with buttons multiple choice
 ```
 - activeColor : the color when item is enabled (String)
 - disabledColor : the color when item is disabled(String)
-- data ([data Object])
+- data ([Data Object])
+```
+
+Data object :
+
+```
+- active : set if this button is active (Boolean)
+- view : set the parent of the button (Ti.UI.View)
+- viewPadding : set the container of label/icon (Ti.UI.View)
+- label : set the label property (Ti.UI.Label)
+- icon : set the icon property (Ti.UI.Label)
 ```
 
 Exemple usage :
