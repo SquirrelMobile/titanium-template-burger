@@ -23,9 +23,7 @@
 
 ## Form generator
 
-Form generator contains 15 types of fields, each field contains views as here :
-
-you can create a form with only the form in xml and object in tss like this :
+Form generator contains 15 types of fields, you can create a form with only the form in xml and object in tss like this :
 
 login.xml
 
@@ -85,7 +83,18 @@ login.tss
 }
 ```
 
-result : ![result](./screens/example_form.png?raw=true "result")
+in js you can get handle field with :
+
+```
+var champs = $.form.getChamps();
+champs.textFieldGenericPopup.callback = function(e) {
+  champs.textFieldGenericPopup.setValue(e.title);
+};
+```
+
+Result :
+
+![result](./screens/example_form.png?raw=true "result")
 
 ### Globals
 
@@ -157,6 +166,8 @@ fieldView: {
 Properties for all "textField" type :
 
 #### textField
+
+![textField](./screens/textField.png?raw=true "textField")
 
 Get a simple textfield
 
@@ -234,6 +245,8 @@ Exemple usage :
 
 #### textFieldGenericPopup
 
+![generic](./screens/textFieldGeneric.png?raw=true "textFieldGeneric")
+
 Get a field with a fake textfield, when you click it opens a popup with a controller in params
 Properties :
 
@@ -269,6 +282,8 @@ Exemple usage :
 ```
 
 #### textFieldList
+
+![textFieldList](./screens/textfieldList.png?raw=true "textFieldList")
 
 Get a field with a picker
 
@@ -427,6 +442,8 @@ Exemple usage :
 
 #### photoSelector
 
+![optionDialog](./screens/photoSelector.png?raw=true "photoSelector")
+
 get a component for set a photo in a field
 
 ```
@@ -496,7 +513,9 @@ Exemple usage :
 
 #### fakeTextField
 
-get a fake textField, it's a label for simple click event
+![fakeTextField](./screens/textField.png?raw=true "fakeTextField")
+
+Get a fake textField, it's a label use for simple click event
 
 ```
 
@@ -511,13 +530,13 @@ Exemple usage :
 {
 id: "textfield",
 title : {
-text : "textfield",
+  text : "textfield",
 },
 textField : {
-hintText : "test",
+  hintText : "test",
 },
 required : true,
-type : "fakeTextField",
+  type : "fakeTextField",
 }
 
 ```
@@ -526,7 +545,7 @@ type : "fakeTextField",
 
 ![checkbox](./screens/checkbox.png?raw=true "checkbox")
 
-get a checkBox
+Get a simple checkBox with text
 
 ```
 
