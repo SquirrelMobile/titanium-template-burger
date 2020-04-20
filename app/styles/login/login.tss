@@ -42,8 +42,46 @@
   theme :"Theme.Login",
   activityEnterAnimation: Titanium.UI.Android.TRANSITION_FADE_IN
 }
-
 '#form': {
+  champs : [
+    {
+      id: "email",
+      title : {
+        text : "Email",
+      },
+      textField : {
+        hintText : "type your email",
+      },
+      type : "textFieldEmail",
+      required : true,
+    },
+    {
+      id: "password",
+      title : {
+        text : "Password",
+      },
+      textField : {
+          hintText : "Type your password",
+      },
+      type : "textFieldPassword",
+    },
+    {
+      id: "valid",
+      button : {
+        top: 20,
+        backgroundColor: Alloy.CFG.COLORS.main2,
+        width: 185,
+        borderRadius: 5,
+      },
+      label : {
+        text : L('connect'),
+        color: "white",
+      },
+      type : "valid",
+    }
+  ]
+}
+/* '#form': {
   champs : [
     {
       container : {
@@ -257,4 +295,4 @@
       type : "valid",
     }
   ]
-}
+} */

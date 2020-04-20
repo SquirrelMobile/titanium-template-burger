@@ -5,7 +5,7 @@
 
 		<ScrollView class="container">
 			<View left="10" right="10">
-				<Require src="/component/form" id="form" onValid="submit" />
+				<Require src="/component/form" class="defaultForm" id="form" onValid="submit" />
 			</View>
 		</ScrollView>
 

@@ -98,6 +98,12 @@ Result :
 
 ### Globals
 
+#### By default the form use property in app.tss ".defaultForm", so don't forget to add class in xml component :
+
+```
+<Require src="/component/form" class="defaultForm" id="form" />
+```
+
 Properties for each fields :
 
 ![TitleButtons](./screens/title_button.png?raw=true "TitleButtons")
@@ -370,6 +376,7 @@ Exemple usage :
 Get a simple textfield with passwordMask and icon on right for disable/enable the passwordMask
 
 ```
+- minLength : set the minimum length for password
 - textfield : access to textField view (Ti.UI.TextField)
 ```
 
@@ -378,6 +385,7 @@ Exemple usage :
 ```
 {
   id: "password",
+  minLength : 6,
   title : {
     text : "Password",
   },

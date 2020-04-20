@@ -18,6 +18,9 @@ var champs = $.form.getChamps();
 	_.each(champs, function(e, key) {
 		console.log(key);
 	});
+	champs.cgu.label.addEventListener("click", function() {
+		alert("");
+	});
 })($.args);
 
 /**

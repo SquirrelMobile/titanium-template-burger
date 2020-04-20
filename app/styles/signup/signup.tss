@@ -45,58 +45,52 @@
       required : true
     },
     {
-      id: "passwordConfirm",
-      type : "textFieldPassword",
-      title : {
-        text : L('form.password'),
-      },
-      textField : {
-        hintText : L('form.password'),
-      },
-      required : true
-    },
-    {
       id: "phone",
-      type : "textfield",
-      keyboardType: Ti.UI.KEYBOARD_TYPE_PHONE_PAD,
-      hintTextTitle:L('form.phone'),
-      imageRight:true,
-      imageRightView :{
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        text : "\uf095",
-        zIndex: 999,
-        color : Alloy.CFG.COLORS.main,
-        font: { fontFamily: Alloy.CFG.FONTS.fa, fontSize: 14 },
-      },
-      required : true
-    },
-    {
-      id: "birthdate",
-      type : "textFieldDate",
       title : {
-        text : L('form.birthday'),
+        text : L("form.phone"),
+      },
+      container : {
+        left : 5
+      },
+      prefix: {
+        font : { fontFamily: Alloy.CFG.FONTS.light, fontSize: 14 },
       },
       textField : {
-        hintText : L('form.birthday'),
+        hintText : L("form.phone"),
       },
-      required : true
+      type : "textFieldPhone",
+      required : true,
+      groupId: 1
+    },
+    {
+      id: "birthday",
+      title : {
+        text : L("form.birthdate"),
+      },
+      textField : {
+        hintText : L("form.birthdate"),
+      },
+      required : true,
+      type : "textFieldDate"
     },
     {
       id: "cgu",
-      color : Alloy.CFG.COLORS.black,
-      text:  L("form.cgu"),
+      label :{
+        text: L("form.cgu"),
+        font : { fontFamily: Alloy.CFG.FONTS.light, fontSize: 14 },
+        color : "white"
+      },
       type : "checkbox",
-      required : true
     },
     {
       id: "valid",
       button : {
         backgroundColor: Alloy.CFG.COLORS.main2,
         width: 185,
-        bottom: 10
+        top: 20
       },
       label : {
-        text : L('connect'),
+        text : L('validate'),
         color: "white",
       },
       type : "valid"

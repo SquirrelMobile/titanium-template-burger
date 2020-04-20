@@ -28,19 +28,23 @@ class TextField extends Field {
 
 		let that = this;
 		let containerBorderColor = this.container.borderColor;
-		let bottomViewColor = this.bottomView.backgroundColor;
+		let bottomViewColor = this.bottomView && this.bottomView.backgroundColor;
 		this.textField.addEventListener("focus", function() {
 			if (that.bottomView.visible == false) {
 				that.container.borderColor = that.activeColor;
 			} else {
-				that.bottomView.backgroundColor = that.activeColor;
+				if (bottomViewColor) {
+					that.bottomView.backgroundColor = that.activeColor;
+				}
 			}
 		});
 		this.textField.addEventListener("blur", function() {
 			if (that.bottomView.visible == false) {
 				that.container.borderColor = containerBorderColor;
 			} else {
-				that.bottomView.backgroundColor = bottomViewColor;
+				if (bottomViewColor) {
+					that.bottomView.backgroundColor = bottomViewColor;
+				}
 			}
 		});
 	}
