@@ -42,8 +42,10 @@ function verif(obj) {
 	var d = [];
 	_.each(obj, function(elem) {
 		if (elem.required && (!elem.getValue() || elem.getValue() === "")) {
-			var keyEntire = elem.hintTextTitle ? elem.hintTextTitle.text : elem.id;
-			d.push(keyEntire);
+			var keyEntire = elem.title ? elem.title.text : elem.id;
+			if (keyEntire !== "") {
+				d.push(keyEntire.replace(/\*/g, ""));
+			}
 		}
 	});
 	if (d.length > 0) {

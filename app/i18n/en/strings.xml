@@ -69,4 +69,5 @@
 	<string name="error.phone_not_validated">Format téléphone non valide</string>
 	<string name="error.password_not_validated">Mot de passe trop court</string>
 	<string name="select.map">Sélectionner</string>
+	<string name="selectCountry">Choisir un pays</string>
 </resources>

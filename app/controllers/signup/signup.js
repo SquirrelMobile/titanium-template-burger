@@ -19,7 +19,7 @@ var champs = $.form.getChamps();
 		console.log(key);
 	});
 	champs.cgu.label.addEventListener("click", function() {
-		alert("");
+		//alert("");
 	});
 })($.args);
 

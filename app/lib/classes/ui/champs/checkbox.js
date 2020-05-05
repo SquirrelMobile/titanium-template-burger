@@ -54,6 +54,7 @@ class CheckBox extends Field {
 	}
 
 	setValue(bool) {
+		this.value = bool;
 		if (bool) {
 			this.checkBox.stop();
 			this.checkBox.start(30, 75);

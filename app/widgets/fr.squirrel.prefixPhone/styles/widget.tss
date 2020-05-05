@@ -23,7 +23,7 @@
 
 
 ".container": {
-  top: 20,
+  top: Alloy.Globals.top,
   bottom : 20,
   left: 40,
   right : 40,
