@@ -1,7 +1,6 @@
 console.log("DIRECTORY IS => " + Ti.Filesystem.applicationDataDirectory);
 import { hasNotch } from "ti.detect";
 require("/dao/cache");
-
 const AvImageview = require("av.imageview");
 
 if (Ti.version.replace(/[.]/gi, "").replace("GA", "") >= 900) {
@@ -65,6 +64,11 @@ if (OS_IOS) {
 
 Alloy.Globals.top = OS_IOS ? (Alloy.Globals.Device.isiPhoneX ? 40 : 20) : 0;
 
+// fieldView: {
+// 	height: Ti.UI.SIZE,
+// 	left: 0,
+// 	right: 0,
+// },
 //enable push notification with OneSignal
 //require("net/onesignalpns").init();
 
