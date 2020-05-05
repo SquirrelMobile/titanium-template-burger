@@ -82,21 +82,6 @@ var menu = [
 })($.args);
 
 /**
- * actions - description
- *
- * @param  {type} e description
- * @return {type}   description
- */
-function actions(e) {
-	var type = e.type;
-	if (type === "home") {
-		findRowMenu({ id: "home" });
-	} else if (type === "Left" || type === "Right") {
-		toggle(e);
-	}
-}
-
-/**
  * @type {Number} currentIndex of menu item
  */
 var currentIndex = null;
@@ -224,7 +209,9 @@ function loadView(e) {
 				$.drawer.closeLeftWindow();
 			}
 			//cleanup centerWindow
-			//$.contentWrapper.removeAllChildren();
+			if (OS_IOS) {
+				$.contentWrapper.removeAllChildren();
+			}
 
 			//$.titleWindow.text = currentProperties.titleWindow;
 
@@ -244,7 +231,9 @@ function loadView(e) {
 			$.drawer.closeLeftWindow();
 
 			//cleanup centerWindow
-			$.contentWrapper.removeAllChildren();
+			if (OS_IOS) {
+				$.contentWrapper.removeAllChildren();
+			}
 
 			currentIndex = -1;
 			//add view to centerWindow
