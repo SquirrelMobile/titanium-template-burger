@@ -50,7 +50,7 @@
         text : "Email",
       },
       textField : {
-        hintText : "type your email",
+        hintText : "Type your email",
       },
       type : "textFieldEmail",
       required : true,
