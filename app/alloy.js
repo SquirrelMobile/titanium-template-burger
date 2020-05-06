@@ -1,7 +1,6 @@
 console.log("DIRECTORY IS => " + Ti.Filesystem.applicationDataDirectory);
 import { hasNotch } from "ti.detect";
 require("/dao/cache");
-
 const AvImageview = require("av.imageview");
 
 if (Ti.version.replace(/[.]/gi, "").replace("GA", "") >= 900) {
@@ -53,18 +52,29 @@ if (!ENV_PROD) {
 
 require("net/apiconfig").init();
 
-if (OS_IOS) {
-	Ti.App.addEventListener("resumed", function(e) {
-		setTimeout(function() {
+Ti.App.addEventListener("resumed", function(e) {
+	setTimeout(function() {
+		if (OS_IOS) {
 			Ti.UI.iOS.setAppBadge(0);
-		}, 500);
-	});
+		} else {
+			Ti.Android.NotificationManager.cancelAll();
+		}
+	}, 500);
+});
 
+if (OS_IOS) {
 	Ti.UI.iOS.setAppBadge(0);
+} else {
+	Ti.Android.NotificationManager.cancelAll();
 }
 
 Alloy.Globals.top = OS_IOS ? (Alloy.Globals.Device.isiPhoneX ? 40 : 20) : 0;
 
+// fieldView: {
+// 	height: Ti.UI.SIZE,
+// 	left: 0,
+// 	right: 0,
+// },
 //enable push notification with OneSignal
 //require("net/onesignalpns").init();
 
