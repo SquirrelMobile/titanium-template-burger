@@ -15,8 +15,6 @@ class TextFieldList extends FakeTextField {
 			this.fieldView.remove(this.faketextField);
 			var data = [];
 			if (obj.list) {
-				this.currentChoice = _.first(obj.list);
-
 				this.faketextField = Ti.UI.createPicker({
 					text: obj.textField.hintText,
 					height: Ti.UI.FILL,
@@ -25,53 +23,22 @@ class TextFieldList extends FakeTextField {
 				if (this.defaultParams && this.defaultParams.textField) {
 					this.faketextField.applyProperties(this.defaultParams.textField);
 				}
-
-				var column1 = Ti.UI.createPickerColumn({ width: Ti.UI.FILL });
-				this.list = obj.list;
-				this.faketextField.value = this.list[0];
-				this.faketextField.val = this.list[0];
-				_.map(obj.list, function(ev) {
-					var title = "picker." + ev.text;
-					var titleComplete = L(title);
-					return column1.addRow(
-						Ti.UI.createPickerRow(
-							_.extend(ev, {
-								title: titleComplete,
-								val: ev.text,
-								textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-							}),
-						),
-					);
-				});
+				this.setList(obj.list);
 				var that = this;
 				this.faketextField.addEventListener("change", function(e) {
 					that.faketextField.value = that.list[e.rowIndex];
 					that.faketextField.val = that.list[e.rowIndex];
 				});
-				this.faketextField.add([column1]);
 				this.fieldView.add(this.faketextField);
 			}
 		} else if (OS_IOS) {
 			this.faketextField.color = obj.color;
-			var first = _.first(obj.list);
-			if (first) {
-				this.currentChoice = first;
-				if (first.text === "") {
-					this.faketextField.applyProperties(first);
-					(this.faketextField.color = "gray"), (this.faketextField.text = "Non renseigné");
-					this.faketextField.val = first.text;
-				} else {
-					var key = first.text;
-					this.faketextField.applyProperties(first);
-					this.setValue(L(key));
-					this.faketextField.val = first.text;
-				}
-			}
+			this.setList(obj.list);
 			var that = this;
 			this.container.addEventListener("click", function(e) {
-				if (obj.list) {
+				if (that.list) {
 					Alloy.createController("/partials/_picker", {
-						data: obj.list,
+						data: that.list,
 						title: obj.hintText || obj.hintTextTitle,
 					})
 						.on("click", function(val) {
@@ -83,12 +50,53 @@ class TextFieldList extends FakeTextField {
 							});
 							that.faketextField.value = val.value;
 							that.faketextField.val = val.val;
-							that.setValue(L("picker." + val.val));
+							that.setValue(val.val);
 						})
 						.getView()
 						.open();
 				}
 			});
+		}
+	}
+
+	setList(list) {
+		if (OS_ANDROID) {
+			// console.log("list", list);
+			this.currentChoice = _.first(list);
+			this.list = list;
+			var column1 = Ti.UI.createPickerColumn({ width: Ti.UI.FILL });
+			if (list.length > 0) {
+				this.faketextField.value = list[0];
+				this.faketextField.val = list[0];
+			}
+			_.each(list, function(ev) {
+				column1.addRow(
+					Ti.UI.createPickerRow(
+						_.extend(ev, {
+							title: ev.text,
+							val: ev.text,
+							textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+						}),
+					),
+				);
+			});
+			this.faketextField.columns = [column1];
+		} else {
+			this.list = list;
+			var first = _.first(list);
+			if (first) {
+				this.currentChoice = first;
+				if (first.text === "") {
+					this.faketextField.applyProperties(first);
+					(this.faketextField.color = "gray"), (this.faketextField.text = "Non renseigné");
+					this.faketextField.val = first.text;
+				} else {
+					var key = first.text;
+					this.faketextField.applyProperties(first);
+					this.setValue(key);
+					this.faketextField.val = first.text;
+				}
+			}
 		}
 	}
 
@@ -100,7 +108,7 @@ class TextFieldList extends FakeTextField {
 		if (OS_ANDROID) {
 			this.faketextField.setSelectedRow(0, _.findIndex(this.list, { text: val }));
 		}
-		this.faketextField.text = L("picker." + val);
+		this.faketextField.text = val;
 		this.faketextField.value = val;
 		this.faketextField.val = val;
 	}
