@@ -4,9 +4,12 @@ class TextFieldEmail extends TextField {
 	constructor(obj) {
 		super(obj);
 		this.createButton(
-			{
-				title: "\uf0e0",
-			},
+			_.extend(
+				{
+					title: "\uf0e0",
+				},
+				obj.buttonRight || {},
+			),
 			"buttonRight",
 		);
 		this.textField.applyProperties({

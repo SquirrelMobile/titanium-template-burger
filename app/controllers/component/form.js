@@ -3,8 +3,8 @@ import { AlertDialog } from "classes/ui/dialog";
 var champs = [];
 
 //Create fields
-_.each(args.champs, function(e, i) {
-	var nbGroupId = _.filter(args.champs, function(filter) {
+_.each(args.champs, function (e, i) {
+	var nbGroupId = _.filter(args.champs, function (filter) {
 		return filter.groupId === e.groupId && filter.groupId;
 	});
 
@@ -27,7 +27,7 @@ _.each(args.champs, function(e, i) {
 //Click event for valid type field
 function handleValid() {
 	var obj = {};
-	_.each(champs, function(e, i) {
+	_.each(champs, function (e, i) {
 		if (e.type !== "valid") {
 			obj[e.id] = e.getValue();
 		}
@@ -40,7 +40,7 @@ function handleValid() {
 //Check if each required field is filled and check if the format of the fields is ok
 function verif(obj) {
 	var d = [];
-	_.each(obj, function(elem) {
+	_.each(obj, function (elem) {
 		if (elem.required && (!elem.getValue() || elem.getValue() === "")) {
 			var keyEntire = elem.title ? elem.title.text : elem.id;
 			if (keyEntire !== "") {
@@ -62,7 +62,7 @@ function verif(obj) {
 				touchFeedback: true,
 				color: "white",
 				width: "99%",
-				click: function() {
+				click: function () {
 					d.hide();
 				},
 			},
@@ -71,7 +71,7 @@ function verif(obj) {
 		return false;
 	}
 	var error = [];
-	_.each(obj, function(e) {
+	_.each(obj, function (e) {
 		if (_.isFunction(e.checkError)) {
 			if (e.checkError()) {
 				error.push(e.checkError().text);
@@ -92,7 +92,7 @@ function verif(obj) {
 				touchFeedback: true,
 				color: "white",
 				width: "99%",
-				click: function() {
+				click: function () {
 					d.hide();
 				},
 			},
@@ -123,6 +123,7 @@ function addField(e, i, size) {
 				"checkbox",
 				"buttonsMultiple",
 				"map",
+				"switch",
 			],
 			e.type,
 		) > -1
@@ -169,7 +170,7 @@ function addField(e, i, size) {
 // retrieve all the fields except the valid type
 function getChamps() {
 	var obj = {};
-	_.each(champs, function(e) {
+	_.each(champs, function (e) {
 		obj[e.id] = e;
 	});
 	return obj;
@@ -178,7 +179,7 @@ $.getChamps = getChamps;
 
 // execute the blur method on all fields
 function blurAll(e) {
-	_.each(champs, function(champ) {
+	_.each(champs, function (champ) {
 		if (champ.blur) {
 			champ.blur();
 		}

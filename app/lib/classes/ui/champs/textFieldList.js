@@ -5,9 +5,12 @@ class TextFieldList extends FakeTextField {
 		super(obj);
 
 		this.createButton(
-			{
-				title: "\uf0d7",
-			},
+			_.extend(
+				{
+					title: "\uf0d7",
+				},
+				obj.buttonRight || {},
+			),
 			"buttonRight",
 		);
 
@@ -30,7 +33,7 @@ class TextFieldList extends FakeTextField {
 				this.list = obj.list;
 				this.faketextField.value = this.list[0];
 				this.faketextField.val = this.list[0];
-				_.map(obj.list, function(ev) {
+				_.map(obj.list, function (ev) {
 					var title = "picker." + ev.text;
 					var titleComplete = L(title);
 					return column1.addRow(
@@ -44,7 +47,7 @@ class TextFieldList extends FakeTextField {
 					);
 				});
 				var that = this;
-				this.faketextField.addEventListener("change", function(e) {
+				this.faketextField.addEventListener("change", function (e) {
 					that.faketextField.value = that.list[e.rowIndex];
 					that.faketextField.val = that.list[e.rowIndex];
 				});
@@ -68,13 +71,13 @@ class TextFieldList extends FakeTextField {
 				}
 			}
 			var that = this;
-			this.container.addEventListener("click", function(e) {
+			this.container.addEventListener("click", function (e) {
 				if (obj.list) {
 					Alloy.createController("/partials/_picker", {
 						data: obj.list,
 						title: obj.hintText || obj.hintTextTitle,
 					})
-						.on("click", function(val) {
+						.on("click", function (val) {
 							that.faketextField.fireEvent("change", {
 								row: {
 									val: val.val,

@@ -64,6 +64,7 @@
           hintText : "Type your password",
       },
       type : "textFieldPassword",
+      required : true,
     },
     {
       id: "valid",

@@ -4,7 +4,7 @@ class TextFieldDate extends FakeTextField {
 	constructor(obj) {
 		super(obj);
 		var that = this;
-		this.container.addEventListener("click", function() {
+		this.container.addEventListener("click", function () {
 			let controllerDate = Alloy.createController("/partials/dialogDate", {
 				date: that.textField.value || Alloy.Globals.moment(),
 				title: that.textField.hintText,
@@ -26,9 +26,12 @@ class TextFieldDate extends FakeTextField {
 		});
 
 		this.createButton(
-			{
-				title: "\uf133",
-			},
+			_.extend(
+				{
+					title: "\uf133",
+				},
+				obj.buttonRight || {},
+			),
 			"buttonRight",
 		);
 	}

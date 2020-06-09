@@ -5,14 +5,17 @@ class TextFieldOptionDialog extends FakeTextField {
 	constructor(obj) {
 		super(obj);
 		this.createButton(
-			{
-				title: "\uf0d7",
-			},
+			_.extend(
+				{
+					title: "\uf0d7",
+				},
+				obj.buttonRight || {},
+			),
 			"buttonRight",
 		);
 		var that = this;
 		this.optionDialog = obj.optionDialog;
-		this.container.addEventListener("click", function() {
+		this.container.addEventListener("click", function () {
 			if (that.optionDialog) {
 				let options = require("xp.ui").createOptionDialog(that.optionDialog);
 				options.addEventListener("click", event => {

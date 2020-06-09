@@ -7,9 +7,12 @@ class TextFieldPhone extends TextField {
 		this.PhoneNumber = require("awesome-phonenumber");
 
 		this.createButton(
-			{
-				title: "\uf095",
-			},
+			_.extend(
+				{
+					title: "\uf095",
+				},
+				obj.buttonRight || {},
+			),
 			"buttonRight",
 		);
 
@@ -52,7 +55,7 @@ class TextFieldPhone extends TextField {
 			var that = this;
 			this.prefix.addEventListener("click", e => {
 				var c = Alloy.createWidget("fr.squirrel.prefixPhone", { bgTitle: Alloy.CFG.COLORS.main });
-				c.on("selectCountry", function(prefix) {
+				c.on("selectCountry", function (prefix) {
 					that.prefix.data = prefix;
 					that.prefix.text = prefix.emoji + " ";
 					that.prefix.text += prefix.countryCallingCodes[0] ? prefix.countryCallingCodes[0] : "0";

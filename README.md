@@ -167,6 +167,58 @@ fieldView: {
 
 - required : set the field required so if you valid the form it check if the field is not empty
 
+- groupId : set the groupId fields
+
+![groupId](./screens/groupId.png?raw=true "groupId")
+
+You can set multiple fields with the same groupId for getting a horizontal layout with fields
+
+example for have the same result in photo :
+
+```
+{
+  id: "username",
+  title : {
+    text : L('form.username'),
+  },
+  textField : {
+    hintText : L('form.username'),
+  },
+  container : {
+    right : 5
+  },
+  type : "textField",
+  required : true,
+  groupId: 1
+},
+{
+  id: "email",
+  title : {
+    text : L('form.email'),
+  },
+  textField : {
+    hintText : L('form.email'),
+  },
+  container : {
+    left : 5
+  },
+  type : "textFieldEmail",
+  required : true,
+  groupId: 1
+},
+{
+  id: "password",
+  type : "textFieldPassword",
+  title : {
+    text : L('form.password'),
+  },
+  textField : {
+    hintText : L('form.password'),
+  },
+  required : true
+},
+```
+
 ### Differents types field
 
 Properties for all "textField" type :
@@ -376,6 +428,8 @@ Exemple usage :
 Get a simple textfield with passwordMask and icon on right for disable/enable the passwordMask
 
 ```
+- enabledIcon : set enabled icon
+- disabledIcon : set disabled icon
 - minLength : set the minimum length for password
 - textfield : access to textField view (Ti.UI.TextField)
 ```
@@ -641,6 +695,34 @@ Exemple usage :
   type : "buttonsMultiple",
 }
 
+```
+
+#### switch
+
+![switch](./screens/switch.png?raw=true "switch")
+
+Get a simple switch with text
+
+```
+- switch : access to switch view (Ti.UI.Switch)
+- label : access to label view (Ti.UI.Label)
+```
+
+Exemple usage :
+
+```
+{
+  id: "switch",
+  switch : {
+    right: 0
+  },
+  label : {
+    left: 0,
+    text : "activer ?"
+  },
+  type : "switch",
+  required : true
+}
 ```
 
 ---
